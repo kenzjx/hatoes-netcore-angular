@@ -19,8 +19,16 @@ import { DashComponent } from './dashboard/dash/dash.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
-import { CardComponent } from './dashboard/card/card.component';
-import { MyLineChartComponent } from './dashboard/my-line-chart/my-line-chart.component';
+import { CardComponent } from './dashboard/dash/card/card.component';
+import { MyLineChartComponent } from './dashboard/dash/my-line-chart/my-line-chart.component';
+import { MenuComponent } from './core/menu/menu.component';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { HeaderComponent } from './core/header/header.component';
+import { LayoutComponent } from './core/layout/layout.component';
+import { PageHeaderComponent } from './core/page-header/page-header.component';
+import { Routes } from '@angular/router';
+import { MyreportComponent } from './reports/myreport/myreport.component';
+
 
 @NgModule({
   declarations: [
@@ -30,7 +38,12 @@ import { MyLineChartComponent } from './dashboard/my-line-chart/my-line-chart.co
     NavComponent,
     DashComponent,
     CardComponent,
-    MyLineChartComponent
+    MyLineChartComponent,
+    MenuComponent,
+    HeaderComponent,
+    LayoutComponent,
+    PageHeaderComponent,
+    MyreportComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +61,7 @@ import { MyLineChartComponent } from './dashboard/my-line-chart/my-line-chart.co
     MatGridListModule,
     MatCardModule,
     MatMenuModule,
-
+    MatExpansionModule
   ],
   providers: [
     {
