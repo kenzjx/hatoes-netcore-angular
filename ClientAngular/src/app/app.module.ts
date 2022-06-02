@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GoogleLoginProvider, SocialLoginModule } from 'angularx-social-login';
-import { LoginGoogleComponent } from './login-google/login-google.component';
+
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NgChartsModule } from 'ng2-charts';
 import { LayoutModule } from '@angular/cdk/layout';
@@ -14,36 +14,30 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { NavComponent } from './dashboard/nav/nav.component';
-import { DashComponent } from './dashboard/dash/dash.component';
+
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
-import { CardComponent } from './dashboard/dash/card/card.component';
-import { MyLineChartComponent } from './dashboard/dash/my-line-chart/my-line-chart.component';
-import { MenuComponent } from './core/menu/menu.component';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { HeaderComponent } from './core/header/header.component';
-import { LayoutComponent } from './core/layout/layout.component';
-import { PageHeaderComponent } from './core/page-header/page-header.component';
 import { Routes } from '@angular/router';
 import { MyreportComponent } from './reports/myreport/myreport.component';
+import { HeaderComponent } from './core/header/header.component';
+import { MenuComponent } from './core/menu/menu.component';
+import { LoginComponent } from './core/login/login.component';
+import { FooterComponent } from './core/footer/footer.component';
+import { AdminComponent } from './admin/admin.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginGoogleComponent,
     DashboardComponent,
-    NavComponent,
-    DashComponent,
-    CardComponent,
-    MyLineChartComponent,
-    MenuComponent,
+    MyreportComponent,
     HeaderComponent,
-    LayoutComponent,
-    PageHeaderComponent,
-    MyreportComponent
+    MenuComponent,
+    LoginComponent,
+    FooterComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
@@ -53,6 +47,7 @@ import { MyreportComponent } from './reports/myreport/myreport.component';
     SocialLoginModule,
     NgChartsModule,
     LayoutModule,
+    // MATERIAL IMPORT
     MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,

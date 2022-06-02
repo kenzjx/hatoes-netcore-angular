@@ -1,17 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  selector: 'app-admin',
+  templateUrl: './admin.component.html',
+  styleUrls: ['./admin.component.scss']
 })
-export class DashboardComponent implements OnInit {
+export class AdminComponent implements OnInit {
 
   constructor() { }
 
   ngOnInit(): void {
   }
-
 
   title = 'BMS System';
   sideBarOpen = true;

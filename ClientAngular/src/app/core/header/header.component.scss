@@ -1,11 +1,63 @@
-.spacer {
-  flex: 1 1 auto;
+mat-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-radius: 5px;
+  margin-top: 5px;
+  margin-left: 7px;
+  margin-right: 5px;
+  height: fit-content;
 }
 
-.title {
-  cursor: pointer;
+ul {
+  li {
+    list-style: none;
+  }
+}
+button {
+  outline: none;
+  border: 0;
+  background: transparent;
+}
+.user {
+  font-size: 14px;
+}
+mat-toolbar {
+  background: #e5ece9;
+}
+.user-image {
+  border-radius: 50%;
+  width: 40px;
+  height: fit-content;
+  &-icon {
+    height: fit-content;
+
+  }
 }
 
-.welcome-text {
-  font-size: smaller;
+::ng-deep {
+  .mat-menu-content {
+    width: 160px;
+  }
+}
+
+.c-header{
+  display: flex;
+  justify-content: space-between;
+}
+
+.user-header{
+  display: flex;
+
+
+}
+
+.logout{
+  height: fit-content;
+
+}
+
+.role-c{
+  font-size: 0.7rem;
+  margin-left: 60px;
 }

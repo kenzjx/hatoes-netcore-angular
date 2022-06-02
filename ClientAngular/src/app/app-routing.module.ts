@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LayoutComponent } from './core/layout/layout.component';
-import { DashComponent } from './dashboard/dash/dash.component';
+import { AdminComponent } from './admin/admin.component';
+import { AppComponent } from './app.component';
+import { LoginComponent } from './core/login/login.component';
+
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MyreportComponent } from './reports/myreport/myreport.component';
 
@@ -9,20 +11,10 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'home'
+    redirectTo: 'login'
   },
-  {path: '',
-component: LayoutComponent,
-children: [
-  {
-    path: 'dashboard',
-    component: DashboardComponent
-  },
-  {
-    path: 'myreport',
-    component: MyreportComponent
-  }
-]}
+  {path: 'login', component: LoginComponent},
+  {path: 'dashboard', component: AdminComponent}
 ];
 
 @NgModule({
