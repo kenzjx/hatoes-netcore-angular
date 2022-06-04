@@ -23,6 +23,8 @@ namespace Beetsoft_Management_System.Data.Entities
 
         public string? ImagePath { get; set; }
 
+        public string? ImageExtension {set;get;}
+
         public DateTime? StartDate { get; set; }
 
         public DateTime? EndDate { get; set; }
@@ -34,7 +36,7 @@ namespace Beetsoft_Management_System.Data.Entities
         [ForeignKey("Level")]
         public int? LevelId { get; set; }
 
-        public Level Level { get; set; }
+        public Level? Level { get; set; }
 
         [ForeignKey("Salary")]
         public int? SalaryId { get; set; }
@@ -44,7 +46,7 @@ namespace Beetsoft_Management_System.Data.Entities
         [ForeignKey("Department")]
         public int? DepartmentId { get; set; }
 
-        public Department Department { get; set; }
+        public Department? Department { get; set; }
 
         [ForeignKey("Team")]
         public int? TeamId { get; set; }

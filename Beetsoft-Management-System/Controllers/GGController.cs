@@ -8,27 +8,27 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Beetsoft_Management_System.Controllers
 {
-    public class AuthGGController : BaseController
+    public class GGController : BaseController
     {
-        private readonly IUserRepository userServices;
+        private readonly IGoogleRepository googleService;
 
         private readonly UserManager<User> userManager;
-        public AuthGGController(IUserRepository userServices, UserManager<User> userManager) : base(userManager)
+        public GGController(IGoogleRepository googleService, UserManager<User> userManager) : base(userManager)
         {
-            this.userServices = userServices;
+            this.googleService = googleService;
             this.userManager = userManager;
         }
 
         [AllowAnonymous]
-        [HttpPost]
-        public async Task<IActionResult> GoogleAuthenticate([FromBody] GoogleRequest request)
+        [HttpPost("/google")]
+        public async Task<IActionResult> Google([FromBody] GoogleRequest request)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest();
             }
 
-            var token = await userServices.AuthenticateGooleUserAsync(request);
+            var token = await googleService.AuthenticateGooleUserAsync(request);
             try
             {
                 if (token != null)

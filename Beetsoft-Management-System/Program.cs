@@ -8,6 +8,7 @@ using Beetsoft_Management_System.Repository;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.IdentityModel.Tokens;
 using SeedDatas;
 using SeedDatas.Depart;
@@ -53,6 +54,7 @@ var authenOptions = builder.Configuration.GetSection("Authentication");
 builder.Services.Configure<Authentication>(authenOptions);
 
 //Add Service DI
+builder.Services.AddTransient<IGoogleRepository, GoogleRepository>();
 builder.Services.AddTransient<IUserRepository, UserRepository>();
 
 // Add Service JwtBearer
@@ -79,7 +81,6 @@ var app = builder.Build();
 using( var scope = app.Services.CreateScope())
 {
     SeedRoles.InitializeSeedRoles(scope.ServiceProvider);
-    
 }
 using( var scope = app.Services.CreateScope())
 {
@@ -104,6 +105,12 @@ app.UseCors("CorsPolicy");
 app.UseHttpsRedirection();
 
 app.UseStaticFiles();
+app.UseStaticFiles( new StaticFileOptions () {
+    FileProvider = new PhysicalFileProvider(
+        Path.Combine(Directory.GetCurrentDirectory(), "Uploads")
+    ),
+    RequestPath = "/contents"
+});
 
 app.UseAuthentication();
 

@@ -14,7 +14,10 @@ const routes: Routes = [
     redirectTo: 'login'
   },
   {path: 'login', component: LoginComponent},
-  {path: 'dashboard', component: AdminComponent}
+  {path: 'admin', component: AdminComponent,
+  children: [
+    {path: '', loadChildren: () => import('./admin/admin-dashboard/admin-dashboard.module').then(m => m.AdminDashboardModule)}
+  ]}
 ];
 
 @NgModule({

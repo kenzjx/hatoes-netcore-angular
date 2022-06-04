@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Beetsoft_Management_System.Controllers
 {
      [ApiController]
-    [Route("api/[controller]/[action]")]
+    [Route("api/[controller]")]
     public class BaseController : ControllerBase
     {      
             private readonly UserManager<User> userManager;

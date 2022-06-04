@@ -26,6 +26,8 @@ import { MenuComponent } from './core/menu/menu.component';
 import { LoginComponent } from './core/login/login.component';
 import { FooterComponent } from './core/footer/footer.component';
 import { AdminComponent } from './admin/admin.component';
+import { ManageReportComponent } from './reports/manage-report/manage-report.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -37,7 +39,8 @@ import { AdminComponent } from './admin/admin.component';
     MenuComponent,
     LoginComponent,
     FooterComponent,
-    AdminComponent
+    AdminComponent,
+    ManageReportComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +59,9 @@ import { AdminComponent } from './admin/admin.component';
     MatGridListModule,
     MatCardModule,
     MatMenuModule,
-    MatExpansionModule
+    MatExpansionModule,
+
+    HttpClientModule
   ],
   providers: [
     {
