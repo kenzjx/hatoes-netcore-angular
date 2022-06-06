@@ -4,7 +4,9 @@ import {MatSliderModule} from '@angular/material/slider'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { GoogleLoginProvider, SocialLoginModule } from 'angularx-social-login';
+
+import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
+import { GoogleLoginProvider } from 'angularx-social-login';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NgChartsModule } from 'ng2-charts';
@@ -28,6 +30,7 @@ import { FooterComponent } from './core/footer/footer.component';
 import { AdminComponent } from './admin/admin.component';
 import { ManageReportComponent } from './reports/manage-report/manage-report.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -60,8 +63,9 @@ import { HttpClientModule } from '@angular/common/http';
     MatCardModule,
     MatMenuModule,
     MatExpansionModule,
-
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     {
@@ -72,7 +76,7 @@ import { HttpClientModule } from '@angular/common/http';
           {
             id: GoogleLoginProvider.PROVIDER_ID,
             provider: new GoogleLoginProvider(
-              'ClientId'
+              '557580645532-f2om83vuokm89evq4t70b722eq57rvtk.apps.googleusercontent.com'
             )
           }
         ],

@@ -17,12 +17,12 @@ namespace SeedDatas
                         new Microsoft.AspNetCore.Identity.IdentityRole()
                         {
                             Name = "Admin",
-                            NormalizedName= "admin"
+                            NormalizedName= "ADMIN"
                         },
                          new Microsoft.AspNetCore.Identity.IdentityRole()
                         {
                             Name = "Member",
-                            NormalizedName = "admin"
+                            NormalizedName = "MEMBER"
                         }
                     });
                     context.SaveChanges();

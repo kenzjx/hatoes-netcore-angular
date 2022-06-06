@@ -2654,24 +2654,27 @@
     ]
   },
   "packageFolders": {
-    "/home/phong/.nuget/packages/": {}
+    "C:\\Users\\Admin\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/phong/Desktop/BMS/Beetsoft-Management-System/Beetsoft-Management-System/Beetsoft-Management-System/Beetsoft-Management-System.csproj",
+      "projectUniqueName": "D:\\Projects\\BMS\\Beetsoft-Management-System\\Beetsoft-Management-System.csproj",
       "projectName": "Beetsoft-Management-System",
-      "projectPath": "/home/phong/Desktop/BMS/Beetsoft-Management-System/Beetsoft-Management-System/Beetsoft-Management-System/Beetsoft-Management-System.csproj",
-      "packagesPath": "/home/phong/.nuget/packages/",
-      "outputPath": "/home/phong/Desktop/BMS/Beetsoft-Management-System/Beetsoft-Management-System/Beetsoft-Management-System/obj/",
+      "projectPath": "D:\\Projects\\BMS\\Beetsoft-Management-System\\Beetsoft-Management-System.csproj",
+      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+      "outputPath": "D:\\Projects\\BMS\\Beetsoft-Management-System\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/phong/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "http://nuget.sitefinity.com/nuget": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -2751,7 +2754,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.300/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
       }
     }
   }
