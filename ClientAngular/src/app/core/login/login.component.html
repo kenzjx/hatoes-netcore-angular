@@ -1,1 +1,51 @@
+<<<<<<< HEAD
 <p>login works!</p>
+=======
+<!-- <div class="container mt-5 center-align">
+    <div *ngIf="!user" class="card text-center" style="width: 18rem; padding: 10px;">
+        <h5>Google Login</h5>
+        <div class="card-block">
+            <h4 class="card-title">
+                Not sign in
+            </h4>
+            <p class="card-text">sign in with</p>
+        </div>
+        <div class="card-block">
+            <button class="btn btn-primary" (click)="loginWithgoogle()">Login with Google</button>
+        </div>
+    </div>
+    <div *ngIf="user" class="card text-center" style="width: 18rem; padding: 10px;">
+        <h5>Google Login</h5>
+        <div class="card-block">
+            <p class="card-title">{{user.name}}</p>
+            <p class="card-text">{{user.email}}</p>
+        </div>
+        <div class="card-block">
+            <button class="btn btn-danger" (click)="signout()">sign out</button>
+        </div>
+    </div>
+</div> -->
+
+<div class="container col m4 offset center-align ">
+    <div class="col s12 m6 offset-m3 center-align">
+        <div class="card-image">
+            <img style="margin: top 5px ;" src="data:image/png;base64,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"
+                alt="">
+        </div>
+        <div class="content">
+            <h2>Beetsoft Management System</h2>
+        </div>
+        <button class="oauth-container btn darken-4 white black-text" href="/users/google-oauth/" style="text-transform:none " (click)="loginWithgoogle()">
+        <div class="left">
+            <img width="20px" style="margin-top:7px; margin-right:8px" alt="Google sign-in" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
+        </div>
+        Login with Google
+    </button>
+    </div>
+</div>
+<!-- Compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+>>>>>>> origin/khaivm_loginGG

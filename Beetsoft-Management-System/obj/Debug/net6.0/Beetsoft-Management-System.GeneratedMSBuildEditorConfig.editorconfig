@@ -8,9 +8,17 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Beetsoft_Management_System
 build_property.RootNamespace = Beetsoft_Management_System
+<<<<<<< HEAD
 build_property.ProjectDir = c:\Users\phong\Desktop\Beetsoft-Management-System-phong-developer\Beetsoft-Management-System\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
 build_property.MSBuildProjectDirectory = c:\Users\phong\Desktop\Beetsoft-Management-System-phong-developer\Beetsoft-Management-System
+=======
+build_property.ProjectDir = D:\Projects\BMS\Beetsoft-Management-System\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = D:\Projects\BMS\Beetsoft-Management-System
+>>>>>>> origin/khaivm_loginGG
 build_property._RazorSourceGeneratorDebug = 

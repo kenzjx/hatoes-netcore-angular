@@ -29,6 +29,7 @@ namespace Beetsoft_Management_System.Data
 
             builder.Entity<PmProject>().HasOne<Project>(m => m.Project).WithMany(x => x.PmProjects);
 
+<<<<<<< HEAD
             builder.Entity<IdentityRole>().HasData(new List<IdentityRole>
                                                         {
                                                         new IdentityRole {
@@ -48,6 +49,12 @@ namespace Beetsoft_Management_System.Data
                 if (tableName.StartsWith("AspNet"))
                 {
                     entityType.SetTableName(tableName.Substring(6));
+=======
+            foreach (var entityType in builder.Model.GetEntityTypes ()) {
+                var tableName = entityType.GetTableName ();
+                if (tableName.StartsWith ("AspNet")) {
+                    entityType.SetTableName (tableName.Substring (6));
+>>>>>>> origin/khaivm_loginGG
                 }
             }
         }

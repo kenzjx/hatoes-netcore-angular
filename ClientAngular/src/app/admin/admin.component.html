@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 <mat-drawer-container>
   <mat-drawer mode="side" [opened]="sideBarOpen">
@@ -10,3 +11,16 @@
     <app-footer></app-footer>
   </mat-drawer-content>
 </mat-drawer-container>
+=======
+<mat-drawer-container>
+    <mat-drawer mode="side" [opened]="sideBarOpen">
+        <!-- <mat-drawer mode="side" opened="true"> -->
+        <app-menu></app-menu>
+    </mat-drawer>
+    <mat-drawer-content class="_flex">
+        <app-header (toggleSidebarForMe)="sideBarToggler()"></app-header>]
+        <router-outlet></router-outlet>
+        <app-footer></app-footer>
+    </mat-drawer-content>
+</mat-drawer-container>
+>>>>>>> origin/khaivm_loginGG

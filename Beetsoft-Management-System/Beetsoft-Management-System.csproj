@@ -25,6 +25,10 @@
 
   <ItemGroup>
     <Folder Include="Controllers\" />
+<<<<<<< HEAD
+=======
+    <Folder Include="Uploads\contents\" />
+>>>>>>> origin/khaivm_loginGG
   </ItemGroup>
 
 </Project>

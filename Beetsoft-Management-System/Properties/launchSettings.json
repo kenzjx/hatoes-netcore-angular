@@ -14,7 +14,11 @@
       "dotnetRunMessages": true,
       "launchBrowser": true,
       "launchUrl": "swagger",
+<<<<<<< HEAD
       "applicationUrl": "https://localhost:5001;http://localhost:5000",
+=======
+      "applicationUrl": "https://localhost:5001",
+>>>>>>> origin/khaivm_loginGG
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

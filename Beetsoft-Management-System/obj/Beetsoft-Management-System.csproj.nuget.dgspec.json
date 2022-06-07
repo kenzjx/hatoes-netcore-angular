@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "C:\\Users\\phong\\Desktop\\Beetsoft-Management-System-phong-developer\\Beetsoft-Management-System\\Beetsoft-Management-System.csproj": {}
   },
   "projects": {
@@ -15,6 +16,22 @@
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\phong\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+    "D:\\Projects\\BMS\\Beetsoft-Management-System\\Beetsoft-Management-System.csproj": {}
+  },
+  "projects": {
+    "D:\\Projects\\BMS\\Beetsoft-Management-System\\Beetsoft-Management-System.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Projects\\BMS\\Beetsoft-Management-System\\Beetsoft-Management-System.csproj",
+        "projectName": "Beetsoft-Management-System",
+        "projectPath": "D:\\Projects\\BMS\\Beetsoft-Management-System\\Beetsoft-Management-System.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "D:\\Projects\\BMS\\Beetsoft-Management-System\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> origin/khaivm_loginGG
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,6 +39,10 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+<<<<<<< HEAD
+=======
+          "http://nuget.sitefinity.com/nuget": {},
+>>>>>>> origin/khaivm_loginGG
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

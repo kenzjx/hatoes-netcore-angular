@@ -5,6 +5,10 @@ namespace Beetsoft_Management_System.Interface
 {
     public interface IGoogleRepository
     {
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/khaivm_loginGG
         Task<string> AuthenticateGooleUserAsync(GoogleRequest request);
     }
 }

@@ -31,9 +31,18 @@ builder.Services.AddCors(opt =>
 {
     opt.AddPolicy("CorsPolicy", opt =>
     {
+<<<<<<< HEAD
         opt.AllowAnyHeader().AllowAnyMethod().AllowCredentials().WithOrigins("http://localhost:4200");
     });
 });
+=======
+        opt.AllowAnyHeader().AllowAnyMethod().AllowCredentials().WithOrigins("http://localhost:4200").WithExposedHeaders("X-Pagination");
+    });
+});
+
+//builder.Services.AddCors();
+
+>>>>>>> origin/khaivm_loginGG
 //2. Setup idetntity
 var key = Encoding.UTF8.GetBytes(builder.Configuration["Authentication:Jwt:Secret"].ToString());
 
@@ -78,7 +87,14 @@ builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
+<<<<<<< HEAD
 
+=======
+//using( var scope = app.Services.CreateScope())
+//{
+//    SeedRoles.InitializeSeedRoles(scope.ServiceProvider);
+//}
+>>>>>>> origin/khaivm_loginGG
 using( var scope = app.Services.CreateScope())
 {
    SeedDepartment.InitializeSeedDepartment(scope.ServiceProvider);
@@ -99,9 +115,19 @@ app.UseRouting();
 
 app.UseCors("CorsPolicy");
 
+<<<<<<< HEAD
 app.UseHttpsRedirection();
 
 app.UseStaticFiles();
+=======
+//app.UseCors(builder => builder.WithOrigins("http://localhost:4200")
+//                                       .AllowAnyHeader()
+//                                       .AllowAnyMethod());
+
+app.UseHttpsRedirection();
+
+//app.UseStaticFiles();
+>>>>>>> origin/khaivm_loginGG
 app.UseStaticFiles( new StaticFileOptions () {
     FileProvider = new PhysicalFileProvider(
         Path.Combine(Directory.GetCurrentDirectory(), "Uploads")
@@ -113,10 +139,14 @@ app.UseAuthentication();
 
 app.UseAuthorization();
 
+<<<<<<< HEAD
  app.UseRouting();
 app.UseEndpoints(endpoints =>
     {
         endpoints.MapControllers();
     });
+=======
+app.MapControllers();
+>>>>>>> origin/khaivm_loginGG
 
 app.Run();
