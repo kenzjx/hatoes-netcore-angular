@@ -6,6 +6,11 @@ import {
 } from 'angularx-social-login';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { pipe } from 'rxjs';
+
+import {map} from 'rxjs/operators';
+import { UserServiceService } from 'src/app/services/user-service/user-service.service';
 
 @Component({
   selector: 'app-login',
@@ -18,28 +23,20 @@ export class LoginComponent implements OnInit {
   hasApiAccess = false;
 
   constructor(private socialAuthService: SocialAuthService,
-              private http: HttpClient) { }
+              private http: HttpClient,
+              private router: Router,
+              private userService : UserServiceService) { }
 
               ngOnInit(): void {
-                this.socialAuthService.authState.subscribe((user) => {
-                  if (user) {
-                    this.http.post<any>('https://localhost:7033/google', { idToken: user.idToken, accessToken: user.response.access_token }).subscribe((authToken: any) => {
-                      console.log(authToken);
-                      let reqHeader = new HttpHeaders({
-                        'Content-Type': 'application/json',
-                        'Authorization': 'Bearer ' + authToken.authToken
-                      });
-                      // this.http.get<any>('https://localhost:44361/secured', { headers: reqHeader }).subscribe((data: any) => {
-                      //   this.hasApiAccess = true;
-                      // })
-                    })
-                  }
-                  this.user = user;
-                })
+
               }
               loginWithgoogle(): any {
-                this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
-                console.log(this.user?.idToken)
+                this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then(googleLogin =>{
+                  console.log(googleLogin.idToken);
+                  const idToken = googleLogin.idToken;
+                 this.userService.googlelogin(idToken).subscribe(data => console.log(data))
+                });
+                this.router.navigateByUrl('/dashboard');
               }
               signout(): any {
                 this.socialAuthService.signOut();

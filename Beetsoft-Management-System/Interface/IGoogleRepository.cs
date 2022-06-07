@@ -5,6 +5,7 @@ namespace Beetsoft_Management_System.Interface
 {
     public interface IGoogleRepository
     {
+
         Task<string> AuthenticateGooleUserAsync(GoogleRequest request);
     }
 }

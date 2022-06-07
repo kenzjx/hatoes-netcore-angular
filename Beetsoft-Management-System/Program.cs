@@ -34,6 +34,9 @@ builder.Services.AddCors(opt =>
         opt.AllowAnyHeader().AllowAnyMethod().AllowCredentials().WithOrigins("http://localhost:4200").WithExposedHeaders("X-Pagination");
     });
 });
+
+//builder.Services.AddCors();
+
 //2. Setup idetntity
 var key = Encoding.UTF8.GetBytes(builder.Configuration["Authentication:Jwt:Secret"].ToString());
 
@@ -78,10 +81,10 @@ builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
-using( var scope = app.Services.CreateScope())
-{
-    SeedRoles.InitializeSeedRoles(scope.ServiceProvider);
-}
+//using( var scope = app.Services.CreateScope())
+//{
+//    SeedRoles.InitializeSeedRoles(scope.ServiceProvider);
+//}
 using( var scope = app.Services.CreateScope())
 {
    SeedDepartment.InitializeSeedDepartment(scope.ServiceProvider);
@@ -101,6 +104,10 @@ if (app.Environment.IsDevelopment())
 app.UseRouting();
 
 app.UseCors("CorsPolicy");
+
+//app.UseCors(builder => builder.WithOrigins("http://localhost:4200")
+//                                       .AllowAnyHeader()
+//                                       .AllowAnyMethod());
 
 app.UseHttpsRedirection();
 

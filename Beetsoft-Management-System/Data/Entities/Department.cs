@@ -14,6 +14,6 @@ namespace Beetsoft_Management_System.Data.Entities
         [MaxLength(200)]
         public string DepartmentName { get; set; }
 
-        public ICollection<User> Users { get; set; }
+        public ICollection<User>? Users { get; set; }
     }
 }

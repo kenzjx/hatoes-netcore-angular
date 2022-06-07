@@ -8,16 +8,17 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { MyreportComponent } from './reports/myreport/myreport.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    pathMatch: 'full',
-    redirectTo: 'login'
-  },
+  // {
+  //   path: '',
+  //   pathMatch: 'full',
+  //   redirectTo: 'login'
+  // },
   {path: 'login', component: LoginComponent},
   {path: 'admin', component: AdminComponent,
   children: [
     {path: '', loadChildren: () => import('./admin/admin-dashboard/admin-dashboard.module').then(m => m.AdminDashboardModule)}
-  ]}
+  ]},
+  {path: 'dashboard', component: DashboardComponent}
 ];
 
 @NgModule({

@@ -25,7 +25,7 @@ namespace Beetsoft_Management_System.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest();
+                return BadRequest();    
             }
 
             var token = await googleService.AuthenticateGooleUserAsync(request);

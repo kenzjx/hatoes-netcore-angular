@@ -484,7 +484,6 @@ namespace Beetsoft_Management_System.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("DepartmentId")
-                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("Dob")
@@ -505,6 +504,9 @@ namespace Beetsoft_Management_System.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<string>("ImageExtension")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ImagePath")
                         .HasColumnType("nvarchar(max)");
 
@@ -514,7 +516,6 @@ namespace Beetsoft_Management_System.Migrations
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<int?>("LevelId")
-                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<bool>("LockoutEnabled")
@@ -876,15 +877,11 @@ namespace Beetsoft_Management_System.Migrations
                 {
                     b.HasOne("Beetsoft_Management_System.Data.Entities.Department", "Department")
                         .WithMany("Users")
-                        .HasForeignKey("DepartmentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("DepartmentId");
 
                     b.HasOne("Beetsoft_Management_System.Data.Entities.Level", "Level")
                         .WithMany("Users")
-                        .HasForeignKey("LevelId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("LevelId");
 
                     b.HasOne("Beetsoft_Management_System.Data.Entities.Salary", "Salary")
                         .WithMany("Users")
