@@ -346,5 +346,6 @@ healthchecksdb
 # Backup folder for Package Reference Convert tool in Visual Studio 2017
 MigrationBackup/
 
+/Beetsoft-Management-System/.vs/Beetsoft-Management-System/FileContentIndex
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
