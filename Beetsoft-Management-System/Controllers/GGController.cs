@@ -1,0 +1,53 @@
+using Beetsoft_Management_System.Data.Entities;
+using Beetsoft_Management_System.Interface;
+using Beetsoft_Management_System.Models.GoogleUser;
+using Beetsoft_Management_System.Models.Token;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+
+namespace Beetsoft_Management_System.Controllers
+{
+    public class ggController : BaseController
+    {
+        private readonly IGoogleRepository googleService;
+
+        private readonly UserManager<User> userManager;
+        public ggController(IGoogleRepository googleService, UserManager<User> userManager) : base(userManager)
+        {
+            this.googleService = googleService;
+            this.userManager = userManager;
+        }
+
+        [AllowAnonymous]
+        [HttpPost("login")]
+        public async Task<IActionResult> Google(GoogleRequest request)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var token = await googleService.AuthenticateGooleUserAsync(request);
+            try
+            {
+                if (token != null)
+                {
+                    return Ok(token);
+                }
+                else return BadRequest();
+            }
+            catch (System.Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ReFreshToken(TokenModel model)
+        {
+            return Ok();
+        }
+
+    }
+}
