@@ -1,11 +1,11 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-<<<<<<< HEAD
-=======
+
+
   "cli": {
     "analytics": "ade34223-49d6-4bbb-9f52-e7239989e9b2"
   },
->>>>>>> origin/khaivm_loginGG
+
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {

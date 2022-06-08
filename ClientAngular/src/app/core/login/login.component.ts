@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-<<<<<<< HEAD
-=======
+
 import {
   SocialAuthService,
   SocialUser,
@@ -13,22 +12,12 @@ import { pipe } from 'rxjs';
 
 import {map} from 'rxjs/operators';
 import { UserServiceService } from 'src/app/services/user-service/user-service.service';
->>>>>>> origin/khaivm_loginGG
+
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-<<<<<<< HEAD
-  styleUrls: ['./login.component.scss']
-})
-export class LoginComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-=======
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
@@ -55,5 +44,5 @@ export class LoginComponent implements OnInit {
               signout(): any {
                 this.socialAuthService.signOut();
               }
->>>>>>> origin/khaivm_loginGG
+
 }
