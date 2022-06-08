@@ -349,3 +349,6 @@ MigrationBackup/
 /Beetsoft-Management-System/.vs/Beetsoft-Management-System/FileContentIndex
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+/Beetsoft-Management-System/obj
+/Beetsoft-Management-System/bin
+.vs/*
