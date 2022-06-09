@@ -16,8 +16,6 @@ using SeedDatas.Depart;
 using SeedDatas.Lv;
 
 var builder = WebApplication.CreateBuilder(args);
-//builder.Host.UseContentRoot(Path.Combine(Directory.GetCurrentDirectory(), @"Uploads"));
-// Add services to the container.
 
 builder.Services.AddControllers();
 
@@ -102,10 +100,7 @@ builder.Services.Configure<FormOptions>(o =>
 
 var app = builder.Build();
 
-//using( var scope = app.Services.CreateScope())
-//{
-//    SeedRoles.InitializeSeedRoles(scope.ServiceProvider);
-//}
+
 using (var scope = app.Services.CreateScope())
 {
     SeedDepartment.InitializeSeedDepartment(scope.ServiceProvider);
@@ -132,12 +127,6 @@ app.UseStaticFiles();
 app.UseAuthentication();
 
 app.UseAuthorization();
-
-//app.UseStaticFiles(new StaticFileOptions()
-//{
-//    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"Uploads")),
-//    RequestPath = new PathString("/Images")
-//});
 
 app.MapControllers();
 

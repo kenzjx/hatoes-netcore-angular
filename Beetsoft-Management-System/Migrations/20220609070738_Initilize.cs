@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Beetsoft_Management_System.Migrations
 {
-    public partial class updateDB : Migration
+    public partial class Initilize : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -351,6 +351,7 @@ namespace Beetsoft_Management_System.Migrations
                     TeamId = table.Column<int>(type: "int", nullable: true),
                     Status = table.Column<int>(type: "int", nullable: false),
                     WorkingStatus = table.Column<int>(type: "int", nullable: false),
+                    Type = table.Column<int>(type: "int", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),

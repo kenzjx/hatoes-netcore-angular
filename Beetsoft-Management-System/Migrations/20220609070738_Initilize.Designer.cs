@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Beetsoft_Management_System.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220607072134_updateDB")]
-    partial class updateDB
+    [Migration("20220609070738_Initilize")]
+    partial class Initilize
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -560,6 +560,9 @@ namespace Beetsoft_Management_System.Migrations
 
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
