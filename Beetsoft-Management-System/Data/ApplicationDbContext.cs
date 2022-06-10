@@ -29,7 +29,7 @@ namespace Beetsoft_Management_System.Data
 
             builder.Entity<PmProject>().HasOne<Project>(m => m.Project).WithMany(x => x.PmProjects);
 
-<<<<<<< HEAD
+            builder.Entity<Report>().HasOne<Project>( r => r.Project).WithMany(p => p.Reports).HasForeignKey(r => r.ProjectId);
             builder.Entity<IdentityRole>().HasData(new List<IdentityRole>
                                                         {
                                                         new IdentityRole {
@@ -43,22 +43,25 @@ namespace Beetsoft_Management_System.Data
                                                             NormalizedName = "member"
                                                         },});
 
-            foreach (var entityType in builder.Model.GetEntityTypes())
-            {
-                var tableName = entityType.GetTableName();
-                if (tableName.StartsWith("AspNet"))
-                {
-                    entityType.SetTableName(tableName.Substring(6));
-=======
-            foreach (var entityType in builder.Model.GetEntityTypes ()) {
-                var tableName = entityType.GetTableName ();
-                if (tableName.StartsWith ("AspNet")) {
-                    entityType.SetTableName (tableName.Substring (6));
->>>>>>> origin/khaivm_loginGG
-                }
-            }
-        }
+            // foreach (var entityType in builder.Model.GetEntityTypes())
+            // {
+            //     var tableName = entityType.GetTableName();
+            //     if (tableName.StartsWith("AspNet"))
+            //     {
+            //         entityType.SetTableName(tableName.Substring(6));
 
+            //         foreach (var entityType in builder.Model.GetEntityTypes())
+            //         {
+            //             var tableName = entityType.GetTableName();
+            //             if (tableName.StartsWith("AspNet"))
+            //             {
+            //                 entityType.SetTableName(tableName.Substring(6));
+
+            //             }
+            //         }
+            //     }
+            // }
+        }
         public DbSet<Department> Departments { set; get; }
 
         public DbSet<FrameWork> FrameWorks { set; get; }

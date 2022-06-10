@@ -1,0 +1,26 @@
+<header class="head">
+  <h1>Account Setting</h1>
+  <h1 class="h1">|</h1>
+  <h3 class="h3">Home > Account Setting</h3>
+</header>
+<mat-tab-group [@.disabled]="true">
+	<div class="flex">
+   <div>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon>person</mat-icon>General
+      </ng-template>
+      <div><app-user-profile></app-user-profile></div>
+    </mat-tab>
+   </div>
+   <div class="pass">
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon>https</mat-icon>Change Password
+      </ng-template>
+      <div><app-user-password></app-user-password></div>
+    </mat-tab>
+   </div>
+  </div>
+
+</mat-tab-group>

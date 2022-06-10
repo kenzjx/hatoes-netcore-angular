@@ -38,7 +38,8 @@ namespace Beetsoft_Management_System.Data.Entities
 
         [ForeignKey("ProjectType")]
         public int ProjectTypeId { get; set; }
-
+    
+        public ICollection<Report> Reports {set;get;}
         public ProjectType ProjectType { get; set; }
 
         public ICollection<MemberProject> MemberProjects { get; set; }

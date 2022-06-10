@@ -6,7 +6,7 @@ import {
   GoogleLoginProvider,
 } from 'angularx-social-login';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 import { Router } from '@angular/router';
 import { pipe } from 'rxjs';
 
@@ -37,9 +37,12 @@ export class LoginComponent implements OnInit {
                 this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then(googleLogin =>{
                   console.log(googleLogin.idToken);
                   const idToken = googleLogin.idToken;
-                 this.userService.googlelogin(idToken).subscribe(data => console.log(data))
+                 this.userService.googlelogin(idToken).subscribe(data => {
+                   console.log(data);
+                  this.userService.decodeJWT(data);
+                 })
                 });
-                this.router.navigateByUrl('/dashboard');
+                this.router.navigateByUrl('/admin');
               }
               signout(): any {
                 this.socialAuthService.signOut();

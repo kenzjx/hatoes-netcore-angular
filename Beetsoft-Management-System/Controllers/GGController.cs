@@ -1,3 +1,5 @@
+using System.Security.Claims;
+using System.Net.Http;
 using Beetsoft_Management_System.Data.Entities;
 using Beetsoft_Management_System.Interface;
 using Beetsoft_Management_System.Models.GoogleUser;
@@ -8,42 +10,36 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Beetsoft_Management_System.Controllers
 {
-<<<<<<< HEAD
+
     public class ggController : BaseController
-=======
-    public class GGController : BaseController
->>>>>>> origin/khaivm_loginGG
+
     {
+
+       private readonly ILogger _logger;
         private readonly IGoogleRepository googleService;
 
         private readonly UserManager<User> userManager;
-<<<<<<< HEAD
-        public ggController(IGoogleRepository googleService, UserManager<User> userManager) : base(userManager)
-=======
-        public GGController(IGoogleRepository googleService, UserManager<User> userManager) : base(userManager)
->>>>>>> origin/khaivm_loginGG
+
+        public ggController(IGoogleRepository googleService, UserManager<User> userManager, ILogger<ggController> logger) : base(userManager)
+
         {
+            this._logger = logger;
             this.googleService = googleService;
             this.userManager = userManager;
         }
 
         [AllowAnonymous]
-<<<<<<< HEAD
-        [HttpPost("login")]
-        public async Task<IActionResult> Google(GoogleRequest request)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest();
-=======
+        
         [HttpPost("/google")]
         public async Task<IActionResult> Google([FromBody] GoogleRequest request)
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest();    
->>>>>>> origin/khaivm_loginGG
+                return BadRequest();
+
             }
+
+         
 
             var token = await googleService.AuthenticateGooleUserAsync(request);
             try
@@ -66,5 +62,13 @@ namespace Beetsoft_Management_System.Controllers
             return Ok();
         }
 
+        
+        [HttpGet("test")]
+        public async Task<IActionResult> Get()
+        {
+             var user = User?.Claims.ToList();
+        //    _logger.LogWarning(user);
+           return Ok(user);
+        }
     }
 }

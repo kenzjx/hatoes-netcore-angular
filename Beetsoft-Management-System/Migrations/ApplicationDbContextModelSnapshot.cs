@@ -361,36 +361,36 @@ namespace Beetsoft_Management_System.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<DateTime>("CreatedAt")
+                    b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("Date")
+                    b.Property<DateTime?>("Date")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Note")
-                        .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
-                    b.Property<int>("ProjectId")
+                    b.Property<int?>("ProjectId")
+                        .IsRequired()
                         .HasColumnType("int");
 
-                    b.Property<double>("Rate")
+                    b.Property<double?>("Rate")
                         .HasColumnType("float");
 
-                    b.Property<int>("ReportType")
+                    b.Property<bool>("ReportType")
+                        .HasColumnType("bit");
+
+                    b.Property<int?>("Status")
                         .HasColumnType("int");
 
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
-
-                    b.Property<float>("Time")
+                    b.Property<float?>("Time")
                         .HasColumnType("real");
 
-                    b.Property<int>("Type")
+                    b.Property<int?>("Type")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("UpdatedAt")
+                    b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("UserId")
@@ -398,6 +398,8 @@ namespace Beetsoft_Management_System.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ProjectId");
 
                     b.ToTable("Reports");
                 });
@@ -584,7 +586,7 @@ namespace Beetsoft_Management_System.Migrations
 
                     b.HasIndex("TeamId");
 
-                    b.ToTable("Users", (string)null);
+                    b.ToTable("AspNetUsers", (string)null);
                 });
 
             modelBuilder.Entity("Beetsoft_Management_System.Data.Entities.UserOnboard", b =>
@@ -651,7 +653,23 @@ namespace Beetsoft_Management_System.Migrations
                         .HasDatabaseName("RoleNameIndex")
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
-                    b.ToTable("Roles", (string)null);
+                    b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "1",
+                            ConcurrencyStamp = "3f946c7e-2645-4aba-bed9-efda85552b60",
+                            Name = "Admin",
+                            NormalizedName = "admin"
+                        },
+                        new
+                        {
+                            Id = "2",
+                            ConcurrencyStamp = "1a61b9fc-1562-4ced-8f2f-ff16ad901f61",
+                            Name = "Member",
+                            NormalizedName = "member"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -676,7 +694,7 @@ namespace Beetsoft_Management_System.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("RoleClaims", (string)null);
+                    b.ToTable("AspNetRoleClaims", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -701,7 +719,7 @@ namespace Beetsoft_Management_System.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("UserClaims", (string)null);
+                    b.ToTable("AspNetUserClaims", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
@@ -723,7 +741,7 @@ namespace Beetsoft_Management_System.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("UserLogins", (string)null);
+                    b.ToTable("AspNetUserLogins", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
@@ -738,7 +756,7 @@ namespace Beetsoft_Management_System.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("UserRoles", (string)null);
+                    b.ToTable("AspNetUserRoles", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -757,7 +775,7 @@ namespace Beetsoft_Management_System.Migrations
 
                     b.HasKey("UserId", "LoginProvider", "Name");
 
-                    b.ToTable("UserTokens", (string)null);
+                    b.ToTable("AspNetUserTokens", (string)null);
                 });
 
             modelBuilder.Entity("Beetsoft_Management_System.Data.Entities.FrameWork", b =>
@@ -858,19 +876,34 @@ namespace Beetsoft_Management_System.Migrations
                     b.Navigation("Postion");
                 });
 
+            modelBuilder.Entity("Beetsoft_Management_System.Data.Entities.Report", b =>
+                {
+                    b.HasOne("Beetsoft_Management_System.Data.Entities.Project", "Project")
+                        .WithMany("Reports")
+                        .HasForeignKey("ProjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Project");
+                });
+
             modelBuilder.Entity("Beetsoft_Management_System.Data.Entities.ReportPosition", b =>
                 {
-                    b.HasOne("Beetsoft_Management_System.Data.Entities.Position", null)
+                    b.HasOne("Beetsoft_Management_System.Data.Entities.Position", "Position")
                         .WithMany("ReportPositions")
                         .HasForeignKey("Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Beetsoft_Management_System.Data.Entities.Report", null)
+                    b.HasOne("Beetsoft_Management_System.Data.Entities.Report", "Report")
                         .WithMany("ReportPositions")
                         .HasForeignKey("Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Position");
+
+                    b.Navigation("Report");
                 });
 
             modelBuilder.Entity("Beetsoft_Management_System.Data.Entities.User", b =>
@@ -1015,6 +1048,8 @@ namespace Beetsoft_Management_System.Migrations
                     b.Navigation("MemberProjects");
 
                     b.Navigation("PmProjects");
+
+                    b.Navigation("Reports");
                 });
 
             modelBuilder.Entity("Beetsoft_Management_System.Data.Entities.ProjectType", b =>

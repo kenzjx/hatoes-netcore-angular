@@ -1,6 +1,7 @@
 using System.Text;
 using Beetsoft_Management_System.Data;
 using Beetsoft_Management_System.Data.Entities;
+using Beetsoft_Management_System.Helpers;
 using Beetsoft_Management_System.Interface;
 using Beetsoft_Management_System.Option;
 using Beetsoft_Management_System.Repository;
@@ -18,6 +19,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -27,22 +29,18 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+
+//builder.Services.AddCors();
 builder.Services.AddCors(opt =>
 {
     opt.AddPolicy("CorsPolicy", opt =>
     {
-<<<<<<< HEAD
-        opt.AllowAnyHeader().AllowAnyMethod().AllowCredentials().WithOrigins("http://localhost:4200");
-    });
-});
-=======
+
         opt.AllowAnyHeader().AllowAnyMethod().AllowCredentials().WithOrigins("http://localhost:4200").WithExposedHeaders("X-Pagination");
     });
 });
 
-//builder.Services.AddCors();
-
->>>>>>> origin/khaivm_loginGG
 //2. Setup idetntity
 var key = Encoding.UTF8.GetBytes(builder.Configuration["Authentication:Jwt:Secret"].ToString());
 
@@ -63,8 +61,14 @@ var authenOptions = builder.Configuration.GetSection("Authentication");
 builder.Services.Configure<Authentication>(authenOptions);
 
 //Add Service DI
+builder.Services.AddScoped<WorkingSort>();
+builder.Services.AddScoped<IWorkingReportRepository, WorkingReportRepository>();
+
 builder.Services.AddTransient<IGoogleRepository, GoogleRepository>();
+
 builder.Services.AddTransient<IUserRepository, UserRepository>();
+
+
 
 // Add Service JwtBearer
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>{
@@ -83,18 +87,16 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
     opt.ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"];
 });
 
+// builder.Services.AddDefaultIdentity<User>()
+//                 .AddRoles<IdentityRole>()
+//                 .AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
+
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
-<<<<<<< HEAD
 
-=======
-//using( var scope = app.Services.CreateScope())
-//{
-//    SeedRoles.InitializeSeedRoles(scope.ServiceProvider);
-//}
->>>>>>> origin/khaivm_loginGG
 using( var scope = app.Services.CreateScope())
 {
    SeedDepartment.InitializeSeedDepartment(scope.ServiceProvider);
@@ -115,19 +117,11 @@ app.UseRouting();
 
 app.UseCors("CorsPolicy");
 
-<<<<<<< HEAD
+
 app.UseHttpsRedirection();
 
 app.UseStaticFiles();
-=======
-//app.UseCors(builder => builder.WithOrigins("http://localhost:4200")
-//                                       .AllowAnyHeader()
-//                                       .AllowAnyMethod());
 
-app.UseHttpsRedirection();
-
-//app.UseStaticFiles();
->>>>>>> origin/khaivm_loginGG
 app.UseStaticFiles( new StaticFileOptions () {
     FileProvider = new PhysicalFileProvider(
         Path.Combine(Directory.GetCurrentDirectory(), "Uploads")
@@ -136,17 +130,13 @@ app.UseStaticFiles( new StaticFileOptions () {
 });
 
 app.UseAuthentication();
-
 app.UseAuthorization();
 
-<<<<<<< HEAD
  app.UseRouting();
 app.UseEndpoints(endpoints =>
     {
         endpoints.MapControllers();
     });
-=======
-app.MapControllers();
->>>>>>> origin/khaivm_loginGG
+
 
 app.Run();

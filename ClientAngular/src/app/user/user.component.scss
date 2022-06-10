@@ -1,0 +1,61 @@
+.head {
+  display: flex;
+  flex-direction: row;
+}
+
+.h3{
+  padding-left: 30px;
+}
+.h1{
+  padding-left: 30px;
+}
+
+:host {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+:host ::ng-deep .mat-tab-labels {
+  flex-direction: column;
+}
+
+mat-tab-group {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+}
+
+:host ::ng-deep .mat-tab-body-wrapper {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+mat-tab-body {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+:host ::ng-deep mat-ink-bar {
+  display: none;
+}
+
+/* Styles for the active tab label */
+:host ::ng-deep.mat-tab-label.mat-tab-label-active {
+  background-color: transparent;
+
+  background-color: lightgreen;
+
+}
+/* Styles for the active tab label */
+:host ::ng-deep.mat-tab-label {
+  background-color: transparent;
+  /* background-color: lightgray; */
+}
+.pass{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

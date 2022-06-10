@@ -82,6 +82,8 @@ namespace Beetsoft_Management_System.Repository
                 {
                     new Claim("Id", user.Id.ToString()),
                     new Claim("Email", user.Email),
+                    new Claim("firstName", user.FirstName),
+                    new Claim("lastNamt", user.LastName),
                     new Claim(_options.ClaimsIdentity.RoleClaimType, role.FirstOrDefault())
                 }),
 

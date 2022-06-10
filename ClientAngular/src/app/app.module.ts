@@ -31,26 +31,38 @@ import { FooterComponent } from './core/footer/footer.component';
 import { AdminComponent } from './admin/admin.component';
 import { ManageReportComponent } from './reports/manage-report/manage-report.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MatInputModule } from '@angular/material/input';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { UserComponent } from './user/user.component';
+import { UserProfileComponent } from './user/user-profile/user-profile.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatTabsModule} from '@angular/material/tabs';
+import { UserPasswordComponent } from './user/user-password/user-password.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { DatePipe } from '@angular/common';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent,
+    AdminComponent,
     MyreportComponent,
     HeaderComponent,
     MenuComponent,
     LoginComponent,
     FooterComponent,
     AdminComponent,
-    ManageReportComponent
+    ManageReportComponent,
+    UserComponent,
+    UserProfileComponent,
+    UserPasswordComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+
     BrowserAnimationsModule,
     MatSliderModule,
     SocialLoginModule,
@@ -66,10 +78,20 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatCardModule,
     MatMenuModule,
     MatExpansionModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatToolbarModule,
+    MatTabsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+
 
     HttpClientModule,
+
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+
 
   ],
   providers: [
@@ -91,6 +113,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         }
       } as SocialLoginModule
     },
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })
