@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Beetsoft_Management_System.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220608035216_Login")]
-    partial class Login
+    [Migration("20220610070841_Update")]
+    partial class Update
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -363,36 +363,36 @@ namespace Beetsoft_Management_System.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<DateTime>("CreatedAt")
+                    b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("Date")
+                    b.Property<DateTime?>("Date")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Note")
-                        .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
-                    b.Property<int>("ProjectId")
+                    b.Property<int?>("ProjectId")
+                        .IsRequired()
                         .HasColumnType("int");
 
-                    b.Property<double>("Rate")
+                    b.Property<double?>("Rate")
                         .HasColumnType("float");
 
-                    b.Property<int>("ReportType")
+                    b.Property<bool>("ReportType")
+                        .HasColumnType("bit");
+
+                    b.Property<int?>("Status")
                         .HasColumnType("int");
 
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
-
-                    b.Property<float>("Time")
+                    b.Property<float?>("Time")
                         .HasColumnType("real");
 
-                    b.Property<int>("Type")
+                    b.Property<int?>("Type")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("UpdatedAt")
+                    b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("UserId")
@@ -400,6 +400,8 @@ namespace Beetsoft_Management_System.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ProjectId");
 
                     b.ToTable("Reports");
                 });
@@ -561,6 +563,9 @@ namespace Beetsoft_Management_System.Migrations
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
 
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
+
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
@@ -659,14 +664,14 @@ namespace Beetsoft_Management_System.Migrations
                         new
                         {
                             Id = "1",
-                            ConcurrencyStamp = "b5d348a9-9148-4d56-9357-e4753e01fed6",
+                            ConcurrencyStamp = "8e584b78-b267-4e84-85a7-195e4f9e3784",
                             Name = "Admin",
                             NormalizedName = "admin"
                         },
                         new
                         {
                             Id = "2",
-                            ConcurrencyStamp = "7aac0728-98bb-4f20-8027-13ec8a1d1b1c",
+                            ConcurrencyStamp = "1bdb7b09-82f9-45bb-9c88-44fab3891090",
                             Name = "Member",
                             NormalizedName = "member"
                         });
@@ -876,19 +881,34 @@ namespace Beetsoft_Management_System.Migrations
                     b.Navigation("Postion");
                 });
 
+            modelBuilder.Entity("Beetsoft_Management_System.Data.Entities.Report", b =>
+                {
+                    b.HasOne("Beetsoft_Management_System.Data.Entities.Project", "Project")
+                        .WithMany("Reports")
+                        .HasForeignKey("ProjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Project");
+                });
+
             modelBuilder.Entity("Beetsoft_Management_System.Data.Entities.ReportPosition", b =>
                 {
-                    b.HasOne("Beetsoft_Management_System.Data.Entities.Position", null)
+                    b.HasOne("Beetsoft_Management_System.Data.Entities.Position", "Position")
                         .WithMany("ReportPositions")
                         .HasForeignKey("Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Beetsoft_Management_System.Data.Entities.Report", null)
+                    b.HasOne("Beetsoft_Management_System.Data.Entities.Report", "Report")
                         .WithMany("ReportPositions")
                         .HasForeignKey("Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Position");
+
+                    b.Navigation("Report");
                 });
 
             modelBuilder.Entity("Beetsoft_Management_System.Data.Entities.User", b =>
@@ -1033,6 +1053,8 @@ namespace Beetsoft_Management_System.Migrations
                     b.Navigation("MemberProjects");
 
                     b.Navigation("PmProjects");
+
+                    b.Navigation("Reports");
                 });
 
             modelBuilder.Entity("Beetsoft_Management_System.Data.Entities.ProjectType", b =>

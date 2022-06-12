@@ -561,6 +561,9 @@ namespace Beetsoft_Management_System.Migrations
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
 
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
+
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
@@ -659,14 +662,14 @@ namespace Beetsoft_Management_System.Migrations
                         new
                         {
                             Id = "1",
-                            ConcurrencyStamp = "3f946c7e-2645-4aba-bed9-efda85552b60",
+                            ConcurrencyStamp = "8e584b78-b267-4e84-85a7-195e4f9e3784",
                             Name = "Admin",
                             NormalizedName = "admin"
                         },
                         new
                         {
                             Id = "2",
-                            ConcurrencyStamp = "1a61b9fc-1562-4ced-8f2f-ff16ad901f61",
+                            ConcurrencyStamp = "1bdb7b09-82f9-45bb-9c88-44fab3891090",
                             Name = "Member",
                             NormalizedName = "member"
                         });

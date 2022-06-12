@@ -23,7 +23,7 @@ namespace Beetsoft_Management_System.Data.Entities
 
         public string? ImagePath { get; set; }
 
-        public string? ImageExtension {set;get;}
+        public string? ImageExtension { set; get; }
 
         public DateTime? StartDate { get; set; }
 
@@ -62,6 +62,8 @@ namespace Beetsoft_Management_System.Data.Entities
         public ICollection<MemberProject> MemberProjects { get; set; }
 
         public ICollection<PmProject> PmProjects { get; set; }
+
+        public TypeUser Type { get; set; }
 
     }
 }

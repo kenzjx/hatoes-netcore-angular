@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "De312Ma1JiPnXyYqzIA68NYOv6Mz3vY7n931WYRJWPU=",
+  "Hash": "8ODmbZk7piL1nZtfGhqMYFNyLw/8+6hZ7G8YBq+DVkw=",
   "Source": "Beetsoft-Management-System",
   "BasePath": "_content/Beetsoft-Management-System",
   "Mode": "Default",
@@ -1035,6 +1035,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\phong\\.nuget\\packages\\microsoft.aspnetcore.identity.ui\\6.0.5\\staticwebassets\\V5\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Identity": "C:\\Users\\phong\\Desktop\\Beetsoft-Management-System-phong-developer\\Beetsoft-Management-System\\wwwroot\\Uploads\\Images\\avatar_248f.png",
+      "SourceId": "Beetsoft-Management-System",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\phong\\Desktop\\Beetsoft-Management-System-phong-developer\\Beetsoft-Management-System\\wwwroot\\",
+      "BasePath": "_content/Beetsoft-Management-System",
+      "RelativePath": "Uploads/Images/avatar_248f.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Uploads\\Images\\avatar_248f.png"
+    },
+    {
+      "Identity": "C:\\Users\\phong\\Desktop\\Beetsoft-Management-System-phong-developer\\Beetsoft-Management-System\\wwwroot\\Uploads\\Images\\z3447820893956_1d9661acd9f845d3c621ad8da05f42d4_0552.jpg",
+      "SourceId": "Beetsoft-Management-System",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\phong\\Desktop\\Beetsoft-Management-System-phong-developer\\Beetsoft-Management-System\\wwwroot\\",
+      "BasePath": "_content/Beetsoft-Management-System",
+      "RelativePath": "Uploads/Images/z3447820893956_1d9661acd9f845d3c621ad8da05f42d4_0552.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Uploads\\Images\\z3447820893956_1d9661acd9f845d3c621ad8da05f42d4_0552.jpg"
     }
   ]
 }

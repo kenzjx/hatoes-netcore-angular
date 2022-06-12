@@ -75,3 +75,6 @@ C:\Users\phong\Desktop\Beetsoft-Management-System-phong-developer\Beetsoft-Manag
 C:\Users\phong\Desktop\Beetsoft-Management-System-phong-developer\Beetsoft-Management-System\obj\Debug\net6.0\Beetsoft-Management-System.genruntimeconfig.cache
 C:\Users\phong\Desktop\Beetsoft-Management-System-phong-developer\Beetsoft-Management-System\obj\Debug\net6.0\ref\Beetsoft-Management-System.dll
 C:\Users\phong\Desktop\Beetsoft-Management-System-phong-developer\Beetsoft-Management-System\bin\Debug\net6.0\System.Linq.Dynamic.Core.dll
+C:\Users\phong\Desktop\Beetsoft-Management-System-phong-developer\Beetsoft-Management-System\bin\Debug\net6.0\FluentValidation.dll
+C:\Users\phong\Desktop\Beetsoft-Management-System-phong-developer\Beetsoft-Management-System\bin\Debug\net6.0\FluentValidation.AspNetCore.dll
+C:\Users\phong\Desktop\Beetsoft-Management-System-phong-developer\Beetsoft-Management-System\bin\Debug\net6.0\FluentValidation.DependencyInjectionExtensions.dll

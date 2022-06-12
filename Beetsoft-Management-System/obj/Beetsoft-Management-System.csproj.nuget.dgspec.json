@@ -40,6 +40,14 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[11.0.2, )"
+            },
+            "FluentValidation.AspNetCore": {
+              "target": "Package",
+              "version": "[11.0.2, )"
+            },
             "Google.Apis.Auth": {
               "target": "Package",
               "version": "[1.57.0, )"
@@ -59,6 +67,10 @@
             "Microsoft.AspNetCore.Identity.UI": {
               "target": "Package",
               "version": "[6.0.5, )"
+            },
+            "Microsoft.AspNetCore.StaticFiles": {
+              "target": "Package",
+              "version": "[2.2.0, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
@@ -82,7 +94,7 @@
               "target": "Package",
               "version": "[6.3.1, )"
             },
-            "system.linq.dynamic.core": {
+            "System.linq.dynamic.core": {
               "target": "Package",
               "version": "[1.2.18, )"
             }

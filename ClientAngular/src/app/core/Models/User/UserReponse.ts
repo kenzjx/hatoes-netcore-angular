@@ -3,6 +3,6 @@ export interface IUserReponse{
   lastName: string,
   email:string,
   phone : string,
-  birthday: Date,
+  birthday?: Date,
   address: string
 }
