@@ -40,10 +40,10 @@ namespace Beetsoft_Management_System.Controllers
 
         }
 
-        [HttpGet("WorkingReports")]
-        public async Task<IActionResult> WorkingReports([FromQuery] WorkingParamters parameters)
+        [HttpGet("WorkingReports/{id}")]
+        public async Task<IActionResult> WorkingReports(string id, [FromQuery] WorkingParamters parameters)
         {
-            var report = await _service.GetWorkingAsync(parameters);
+            var report = await _service.GetWorkingAsync(id, parameters);
 
             var metadata = new
             {

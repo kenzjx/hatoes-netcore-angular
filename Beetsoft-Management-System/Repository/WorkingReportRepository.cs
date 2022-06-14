@@ -1,4 +1,5 @@
 
+using System;
 using System.Linq;
 using System.Linq.Expressions;
 using Beetsoft_Management_System.Data.Entities;
@@ -11,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 
 using System.Text;
 using System.Linq.Dynamic.Core;
+using Beetsoft_Management_System.Systems;
 
 namespace Beetsoft_Management_System.Repository
 {
@@ -36,37 +38,39 @@ namespace Beetsoft_Management_System.Repository
             throw new NotImplementedException();
         }
 
-        public async Task<PagedList<Report>> GetWorkingAsync(WorkingParamters workingParameters)
+        public async Task<PagedList<WorkingView>> GetWorkingAsync( string id ,WorkingParamters workingParameters)
         {
-            var report = context.Reports.Where(p => p.Type == 1).Include(c => c.Project).Include(r => r.ReportPositions).ThenInclude(r => r.Position).Select(r => new WorkingQuery
-            {
+           
+            var reportTest = context.Reports.Where(p => p.ReportType == false && p.UserId == id).Include(r => r.Project).Include(r => r.ReportPositions).ThenInclude(r => r.Position).Select(r => new WorkingView{
                 Id = r.Id,
-                Time = (float)r.Time,
-                Day = (DateTime)r.Date
-            ,
-                Type = (int)r.Type,
+                UserId = r.UserId,            
+                Time = r.Time,
+                Date = r.Date,
                 Note = r.Note,
-                Status = (int)r.Status,
-                Project = r.Project,
-                positionNames = r.ReportPositions.Select(r => r.Position.PositionName)
+                Type = r.Type,
+                Status = r.Status,
+                ProjectName = r.Project.ProjectName,
+                ProjectId = (int)r.ProjectId,
+                Postions = r.ReportPositions.Select(r => new Postition{
+                    positionId = r.Position.Id,
+                    PositionName = r.Position.PositionName
+                })
             }).AsNoTracking();
 
-            var reportTest = context.Reports.Where(p => p.Type == 1).Include( r => r.Project).AsNoTracking();
-
             var reportSeach = SearchBy(reportTest, workingParameters.Name);
-            
+
             var sortedReport = _sortReport.AppySort(reportSeach, workingParameters.OrderBy);
 
-            return await PagedList<Report>.ToPagedList(sortedReport, workingParameters.PageNumber, workingParameters.PageSize);
+            return await PagedList<WorkingView>.ToPagedList(sortedReport, workingParameters.PageNumber, workingParameters.PageSize);
         }
 
-        private IQueryable<Report> SearchBy(IQueryable<Report> report, string name)
+        private IQueryable<WorkingView> SearchBy(IQueryable<WorkingView> report, string name)
         {
             if (!report.Any() || string.IsNullOrEmpty(name)) return report;
-            return report.Where(o => o.Project.ProjectName.ToLower().Contains(name.Trim().ToLower()) );
+            return report.Where(o => o.ProjectName.ToLower().Contains(name.Trim().ToLower()));
         }
 
-        
+
 
         public async Task<Report> GetWorkingByIdAsync(int id)
         {
@@ -78,6 +82,8 @@ namespace Beetsoft_Management_System.Repository
             throw new NotImplementedException();
         }
 
+
+       
 
     }
 }
