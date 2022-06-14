@@ -17,9 +17,9 @@ namespace Beetsoft_Management_System.Data.Entities
         [MaxLength(255)]
         public string? Note { get; set; }
 
-        public int? Status { get; set; }
+        public string? Status { get; set; }
 
-        public int? Type { get; set; }
+        public string? Type { get; set; }
 
         public DateTime? CreatedAt { get; set; }
 
@@ -33,7 +33,8 @@ namespace Beetsoft_Management_System.Data.Entities
 
         public bool ReportType { set; get; }
 
-        [ForeignKey("Id")]
+        public int PositionId {set;get;}
+        
         public ICollection<ReportPosition>? ReportPositions { get; set; }
 
         public User? User {set;get;}

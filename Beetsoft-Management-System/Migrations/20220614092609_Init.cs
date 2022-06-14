@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Beetsoft_Management_System.Migrations
 {
-    public partial class Update : Migration
+    public partial class Init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -114,7 +114,7 @@ namespace Beetsoft_Management_System.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     HourlySalary = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     EffectiveDay = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Status = table.Column<int>(type: "int", nullable: false)
+                    Status = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -258,18 +258,18 @@ namespace Beetsoft_Management_System.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ProjectName = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
-                    StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    EndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Revenue = table.Column<int>(type: "int", nullable: false),
-                    PmEstimate = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    BrseEstimate = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    ComtorEstimate = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    TestEstimate = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    DeveloperEstimate = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ProjectTypeId = table.Column<int>(type: "int", nullable: false)
+                    StartDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    EndDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Revenue = table.Column<int>(type: "int", nullable: true),
+                    PmEstimate = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    BrseEstimate = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    ComtorEstimate = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    TestEstimate = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    DeveloperEstimate = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ProjectTypeId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -278,8 +278,7 @@ namespace Beetsoft_Management_System.Migrations
                         name: "FK_Projects_ProjectTypes_ProjectTypeId",
                         column: x => x.ProjectTypeId,
                         principalTable: "ProjectTypes",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -303,7 +302,7 @@ namespace Beetsoft_Management_System.Migrations
                     TeamId = table.Column<int>(type: "int", nullable: true),
                     Status = table.Column<int>(type: "int", nullable: false),
                     WorkingStatus = table.Column<int>(type: "int", nullable: false),
-                    Type = table.Column<int>(type: "int", nullable: false),
+                    Type = table.Column<int>(type: "int", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -342,35 +341,6 @@ namespace Beetsoft_Management_System.Migrations
                         column: x => x.TeamId,
                         principalTable: "Team",
                         principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Reports",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Time = table.Column<float>(type: "real", nullable: true),
-                    Date = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    Note = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
-                    Status = table.Column<int>(type: "int", nullable: true),
-                    Type = table.Column<int>(type: "int", nullable: true),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    Rate = table.Column<double>(type: "float", nullable: true),
-                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ProjectId = table.Column<int>(type: "int", nullable: false),
-                    ReportType = table.Column<bool>(type: "bit", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Reports", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Reports_Projects_ProjectId",
-                        column: x => x.ProjectId,
-                        principalTable: "Projects",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -533,6 +503,40 @@ namespace Beetsoft_Management_System.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Reports",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Time = table.Column<float>(type: "real", nullable: true),
+                    Date = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Note = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
+                    Status = table.Column<int>(type: "int", nullable: true),
+                    Type = table.Column<int>(type: "int", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Rate = table.Column<double>(type: "float", nullable: true),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    ProjectId = table.Column<int>(type: "int", nullable: true),
+                    ReportType = table.Column<bool>(type: "bit", nullable: false),
+                    PositionId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Reports", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Reports_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Reports_Projects_ProjectId",
+                        column: x => x.ProjectId,
+                        principalTable: "Projects",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "ReportPositions",
                 columns: table => new
                 {
@@ -544,14 +548,14 @@ namespace Beetsoft_Management_System.Migrations
                 {
                     table.PrimaryKey("PK_ReportPositions", x => new { x.ReportId, x.PostionId });
                     table.ForeignKey(
-                        name: "FK_ReportPositions_Postions_Id",
-                        column: x => x.Id,
+                        name: "FK_ReportPositions_Postions_PostionId",
+                        column: x => x.PostionId,
                         principalTable: "Postions",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ReportPositions_Reports_Id",
-                        column: x => x.Id,
+                        name: "FK_ReportPositions_Reports_ReportId",
+                        column: x => x.ReportId,
                         principalTable: "Reports",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -560,12 +564,12 @@ namespace Beetsoft_Management_System.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "1", "8e584b78-b267-4e84-85a7-195e4f9e3784", "Admin", "admin" });
+                values: new object[] { "1", "71b3fb02-30b0-4a00-bc42-5ca1a6301a9d", "Admin", "admin" });
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "2", "1bdb7b09-82f9-45bb-9c88-44fab3891090", "Member", "member" });
+                values: new object[] { "2", "dce1e412-d0e0-4b42-ad5e-be87aa18b984", "Member", "member" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -667,14 +671,19 @@ namespace Beetsoft_Management_System.Migrations
                 column: "PostionId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ReportPositions_Id",
+                name: "IX_ReportPositions_PostionId",
                 table: "ReportPositions",
-                column: "Id");
+                column: "PostionId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Reports_ProjectId",
                 table: "Reports",
                 column: "ProjectId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Reports_UserId",
+                table: "Reports",
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_UserOnboards_LanguageId",
@@ -737,9 +746,6 @@ namespace Beetsoft_Management_System.Migrations
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "AspNetUsers");
-
-            migrationBuilder.DropTable(
                 name: "Reports");
 
             migrationBuilder.DropTable(
@@ -747,6 +753,12 @@ namespace Beetsoft_Management_System.Migrations
 
             migrationBuilder.DropTable(
                 name: "Postions");
+
+            migrationBuilder.DropTable(
+                name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Projects");
 
             migrationBuilder.DropTable(
                 name: "Departments");
@@ -759,9 +771,6 @@ namespace Beetsoft_Management_System.Migrations
 
             migrationBuilder.DropTable(
                 name: "Team");
-
-            migrationBuilder.DropTable(
-                name: "Projects");
 
             migrationBuilder.DropTable(
                 name: "ProjectTypes");

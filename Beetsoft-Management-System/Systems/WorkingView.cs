@@ -12,13 +12,12 @@ namespace Beetsoft_Management_System.Systems
 
         public string? Note { get; set; }
 
-        public int? Status { get; set; }
+        public string? Status { get; set; }
 
-        public int? Type { get; set; }
+        public string? Type { get; set; }
 
         public int ProjectId { set; get; }
 
-        public string UserId { set; get; }
 
         public string ProjectName { set; get; }
 

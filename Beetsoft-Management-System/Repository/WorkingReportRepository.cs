@@ -40,10 +40,8 @@ namespace Beetsoft_Management_System.Repository
 
         public async Task<PagedList<WorkingView>> GetWorkingAsync( string id ,WorkingParamters workingParameters)
         {
-           
-            var reportTest = context.Reports.Where(p => p.ReportType == false && p.UserId == id).Include(r => r.Project).Include(r => r.ReportPositions).ThenInclude(r => r.Position).Select(r => new WorkingView{
-                Id = r.Id,
-                UserId = r.UserId,            
+            var reportTest = context.Reports.Where(p => p.ReportType == false && p.UserId == id).Select(r => new WorkingView{
+                Id = r.Id,            
                 Time = r.Time,
                 Date = r.Date,
                 Note = r.Note,
@@ -51,7 +49,7 @@ namespace Beetsoft_Management_System.Repository
                 Status = r.Status,
                 ProjectName = r.Project.ProjectName,
                 ProjectId = (int)r.ProjectId,
-                Postions = r.ReportPositions.Select(r => new Postition{
+                Postions = r.ReportPositions.Where(r => r.PostionId == r.Report.PositionId).Select(r => new Postition{
                     positionId = r.Position.Id,
                     PositionName = r.Position.PositionName
                 })
@@ -82,8 +80,28 @@ namespace Beetsoft_Management_System.Repository
             throw new NotImplementedException();
         }
 
+        public async Task<PagedList<WorkingView>> GetWorkingManageAsync(WorkingParamters workingParameters)
+        {
+           var reportTest = context.Reports.Where(p => p.ReportType == false).Select(r => new WorkingView{
+                Id = r.Id,            
+                Time = r.Time,
+                Date = r.Date,
+                Note = r.Note,
+                Type = r.Type,
+                Status = r.Status,
+                ProjectName = r.Project.ProjectName,
+                ProjectId = (int)r.ProjectId,
+                Postions = r.ReportPositions.Where(r => r.PostionId == r.Report.PositionId).Select(r => new Postition{
+                    positionId = r.Position.Id,
+                    PositionName = r.Position.PositionName
+                })
+            }).AsNoTracking();
 
-       
+            var reportSeach = SearchBy(reportTest, workingParameters.Name);
 
+            var sortedReport = _sortReport.AppySort(reportSeach, workingParameters.OrderBy);
+
+            return await PagedList<WorkingView>.ToPagedList(sortedReport, workingParameters.PageNumber, workingParameters.PageSize);
+        }
     }
 }

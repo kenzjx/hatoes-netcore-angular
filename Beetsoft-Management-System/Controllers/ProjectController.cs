@@ -24,6 +24,8 @@ namespace Beetsoft_Management_System.Controllers
         [HttpGet("projects")]
         public async Task<IActionResult> Projects()
         {
+            
+            // var result = await context.Projects.Where(p => p.MemberProjects.Any(j => j.UserId == id)).Select(p => new ViewModel { Id = p.Id, Name = p.ProjectName }).ToListAsync();
             var result = await context.Projects.Select(p => new ViewModel { Id = p.Id, Name = p.ProjectName }).ToListAsync();
             return Ok(result);
         }

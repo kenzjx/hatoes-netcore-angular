@@ -13,6 +13,6 @@ namespace Beetsoft_Management_System.Data.Entities
         [MaxLength(255)]
         public string ProjectTypeName { get; set; }
 
-        public ICollection<Project> Projects { get; set; }
+        public ICollection<Project>? Projects { get; set; }
     }
 }

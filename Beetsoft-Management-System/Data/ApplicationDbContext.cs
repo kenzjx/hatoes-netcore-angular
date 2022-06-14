@@ -19,6 +19,8 @@ namespace Beetsoft_Management_System.Data
             builder.Entity<ReportPosition>()
                       .HasKey(c => new { c.ReportId, c.PostionId });
 
+            builder.Entity<ReportPosition>().HasOne<Report>(m => m.Report).WithMany(x => x.ReportPositions).HasForeignKey(s => s.ReportId);
+            builder.Entity<ReportPosition>().HasOne<Position>(m => m.Position).WithMany(x => x.ReportPositions).HasForeignKey( s=> s.PostionId);
             builder.Entity<MemberProject>()
                      .HasKey(c => new { c.UserId, c.ProjectId });
 
@@ -29,7 +31,7 @@ namespace Beetsoft_Management_System.Data
 
             builder.Entity<PmProject>().HasOne<Project>(m => m.Project).WithMany(x => x.PmProjects);
 
-            builder.Entity<Report>().HasOne<Project>( r => r.Project).WithMany(p => p.Reports).HasForeignKey(r => r.ProjectId);
+            builder.Entity<Report>().HasOne<Project>(r => r.Project).WithMany(p => p.Reports).HasForeignKey(r => r.ProjectId);
             builder.Entity<IdentityRole>().HasData(new List<IdentityRole>
                                                         {
                                                         new IdentityRole {

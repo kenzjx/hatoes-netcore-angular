@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Beetsoft_Management_System.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220613063222_Report")]
-    partial class Report
+    [Migration("20220614092609_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -372,8 +372,10 @@ namespace Beetsoft_Management_System.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
+                    b.Property<int>("PositionId")
+                        .HasColumnType("int");
+
                     b.Property<int?>("ProjectId")
-                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<double?>("Rate")
@@ -395,7 +397,6 @@ namespace Beetsoft_Management_System.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("UserId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
@@ -420,7 +421,7 @@ namespace Beetsoft_Management_System.Migrations
 
                     b.HasKey("ReportId", "PostionId");
 
-                    b.HasIndex("Id");
+                    b.HasIndex("PostionId");
 
                     b.ToTable("ReportPositions");
                 });
@@ -440,7 +441,7 @@ namespace Beetsoft_Management_System.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Status")
+                    b.Property<int?>("Status")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -564,7 +565,7 @@ namespace Beetsoft_Management_System.Migrations
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
 
-                    b.Property<int>("Type")
+                    b.Property<int?>("Type")
                         .HasColumnType("int");
 
                     b.Property<string>("UserName")
@@ -665,14 +666,14 @@ namespace Beetsoft_Management_System.Migrations
                         new
                         {
                             Id = "1",
-                            ConcurrencyStamp = "dfbed1b2-43c2-4e1a-8d9d-f594ce284e9f",
+                            ConcurrencyStamp = "71b3fb02-30b0-4a00-bc42-5ca1a6301a9d",
                             Name = "Admin",
                             NormalizedName = "admin"
                         },
                         new
                         {
                             Id = "2",
-                            ConcurrencyStamp = "46032162-67a9-4804-8697-67a01117d86a",
+                            ConcurrencyStamp = "dce1e412-d0e0-4b42-ad5e-be87aa18b984",
                             Name = "Member",
                             NormalizedName = "member"
                         });
@@ -884,15 +885,11 @@ namespace Beetsoft_Management_System.Migrations
                 {
                     b.HasOne("Beetsoft_Management_System.Data.Entities.Project", "Project")
                         .WithMany("Reports")
-                        .HasForeignKey("ProjectId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ProjectId");
 
                     b.HasOne("Beetsoft_Management_System.Data.Entities.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .WithMany("Reports")
+                        .HasForeignKey("UserId");
 
                     b.Navigation("Project");
 
@@ -903,13 +900,13 @@ namespace Beetsoft_Management_System.Migrations
                 {
                     b.HasOne("Beetsoft_Management_System.Data.Entities.Position", "Position")
                         .WithMany("ReportPositions")
-                        .HasForeignKey("Id")
+                        .HasForeignKey("PostionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Beetsoft_Management_System.Data.Entities.Report", "Report")
                         .WithMany("ReportPositions")
-                        .HasForeignKey("Id")
+                        .HasForeignKey("ReportId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1091,6 +1088,8 @@ namespace Beetsoft_Management_System.Migrations
                     b.Navigation("OffReports");
 
                     b.Navigation("PmProjects");
+
+                    b.Navigation("Reports");
                 });
 #pragma warning restore 612, 618
         }

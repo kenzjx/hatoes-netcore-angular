@@ -12,6 +12,8 @@ namespace Beetsoft_Management_System.Repository
     public interface IWorkingReportRepository : IRepositoryBase<Report>
     {
        Task<PagedList<WorkingView>> GetWorkingAsync(string id, WorkingParamters workingParameters);
+
+       Task<PagedList<WorkingView>> GetWorkingManageAsync( WorkingParamters workingParameters);
        
        Task<Report> GetWorkingByIdAsync(int id);
 

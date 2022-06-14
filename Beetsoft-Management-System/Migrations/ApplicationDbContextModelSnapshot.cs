@@ -370,6 +370,9 @@ namespace Beetsoft_Management_System.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
+                    b.Property<int>("PositionId")
+                        .HasColumnType("int");
+
                     b.Property<int?>("ProjectId")
                         .HasColumnType("int");
 
@@ -379,14 +382,14 @@ namespace Beetsoft_Management_System.Migrations
                     b.Property<bool>("ReportType")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("Status")
-                        .HasColumnType("int");
+                    b.Property<string>("Status")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<float?>("Time")
                         .HasColumnType("real");
 
-                    b.Property<int?>("Type")
-                        .HasColumnType("int");
+                    b.Property<string>("Type")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
@@ -411,12 +414,9 @@ namespace Beetsoft_Management_System.Migrations
                     b.Property<int>("PostionId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Id")
-                        .HasColumnType("int");
-
                     b.HasKey("ReportId", "PostionId");
 
-                    b.HasIndex("Id");
+                    b.HasIndex("PostionId");
 
                     b.ToTable("ReportPositions");
                 });
@@ -661,14 +661,14 @@ namespace Beetsoft_Management_System.Migrations
                         new
                         {
                             Id = "1",
-                            ConcurrencyStamp = "8a882735-0c41-448e-acaa-96f25238e988",
+                            ConcurrencyStamp = "c521b241-12fb-40c8-b85d-4400e1f9b0ca",
                             Name = "Admin",
                             NormalizedName = "admin"
                         },
                         new
                         {
                             Id = "2",
-                            ConcurrencyStamp = "3c11b71a-7ec4-418b-8728-2aa2420d317e",
+                            ConcurrencyStamp = "fc3932fb-6591-43f3-baeb-44967717f5a7",
                             Name = "Member",
                             NormalizedName = "member"
                         });
@@ -895,13 +895,13 @@ namespace Beetsoft_Management_System.Migrations
                 {
                     b.HasOne("Beetsoft_Management_System.Data.Entities.Position", "Position")
                         .WithMany("ReportPositions")
-                        .HasForeignKey("Id")
+                        .HasForeignKey("PostionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Beetsoft_Management_System.Data.Entities.Report", "Report")
                         .WithMany("ReportPositions")
-                        .HasForeignKey("Id")
+                        .HasForeignKey("ReportId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

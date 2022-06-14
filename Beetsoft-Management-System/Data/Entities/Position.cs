@@ -11,7 +11,6 @@ namespace Beetsoft_Management_System.Data.Entities
 
         public string PositionName { get; set; }
 
-        [ForeignKey("Id")]
         public ICollection<ReportPosition> ReportPositions { get; set; }
 
         public ICollection<Recruitment> Recruitments { get; set; }
