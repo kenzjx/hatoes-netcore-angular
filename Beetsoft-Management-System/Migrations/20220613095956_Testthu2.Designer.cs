@@ -4,6 +4,7 @@ using Beetsoft_Management_System.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Beetsoft_Management_System.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220613095956_Testthu2")]
+    partial class Testthu2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -661,14 +663,14 @@ namespace Beetsoft_Management_System.Migrations
                         new
                         {
                             Id = "1",
-                            ConcurrencyStamp = "8a882735-0c41-448e-acaa-96f25238e988",
+                            ConcurrencyStamp = "e89a0be7-4e98-4ff8-a383-8bdff4e72486",
                             Name = "Admin",
                             NormalizedName = "admin"
                         },
                         new
                         {
                             Id = "2",
-                            ConcurrencyStamp = "3c11b71a-7ec4-418b-8728-2aa2420d317e",
+                            ConcurrencyStamp = "d90f2276-3b64-4973-8dd3-5594c3ebc81b",
                             Name = "Member",
                             NormalizedName = "member"
                         });

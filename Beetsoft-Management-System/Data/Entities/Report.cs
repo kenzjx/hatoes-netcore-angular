@@ -1,4 +1,4 @@
-﻿using Beetsoft_Management_System.Data.Enums;
+﻿
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -17,9 +17,9 @@ namespace Beetsoft_Management_System.Data.Entities
         [MaxLength(255)]
         public string? Note { get; set; }
 
-        public Status? Status { get; set; }
+        public int? Status { get; set; }
 
-        public WorkingType? Type { get; set; }
+        public int? Type { get; set; }
 
         public DateTime? CreatedAt { get; set; }
 
@@ -27,17 +27,18 @@ namespace Beetsoft_Management_System.Data.Entities
 
         public double? Rate { get; set; }
 
-        public string UserId { set; get; }
+        public string? UserId { set; get; }
 
         public int? ProjectId { set; get; }
 
         public bool ReportType { set; get; }
 
         [ForeignKey("Id")]
-        public ICollection<ReportPosition> ReportPositions { get; set; }
+        public ICollection<ReportPosition>? ReportPositions { get; set; }
 
+        public User? User {set;get;}
         
-        public Project Project {set;get;}
+        public Project? Project {set;get;}
 
 
     }

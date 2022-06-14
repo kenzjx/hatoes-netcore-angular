@@ -1,5 +1,5 @@
 using Beetsoft_Management_System.Data.Entities;
-using Beetsoft_Management_System.Data.Enums;
+
 
 namespace Beetsoft_Management_System.Dtos.Report.Working
 {
@@ -16,13 +16,13 @@ namespace Beetsoft_Management_System.Dtos.Report.Working
 
         public DateTime Day {set;get;}
 
-        public WorkingType Type {set;get;}
+        public int Type {set;get;}
 
         public string Note {set;get;}
 
         public  Project Project {set;get;}
 
-        public Status Status {set;get;}
+        public int Status {set;get;}
 
         // public IEnumerable<Position> Positions {set;get;}
 

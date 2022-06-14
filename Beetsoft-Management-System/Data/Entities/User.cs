@@ -1,4 +1,4 @@
-﻿using Beetsoft_Management_System.Data.Enums;
+﻿
 using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -53,9 +53,9 @@ namespace Beetsoft_Management_System.Data.Entities
 
         public Team? Team { get; set; }
 
-        public Status Status { get; set; }
+        public int Status { get; set; }
 
-        public WorkingStatus WorkingStatus { get; set; }
+        public int WorkingStatus { get; set; }
 
         public ICollection<OffReport> OffReports { set; get; }
 
@@ -63,7 +63,9 @@ namespace Beetsoft_Management_System.Data.Entities
 
         public ICollection<PmProject> PmProjects { get; set; }
 
-        public TypeUser Type { get; set; }
+        public ICollection<Report> Reports {set;get;}
+
+        public int? Type { get; set; }
 
     }
 }

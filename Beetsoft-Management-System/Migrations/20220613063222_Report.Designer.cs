@@ -4,6 +4,7 @@ using Beetsoft_Management_System.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Beetsoft_Management_System.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220613063222_Report")]
+    partial class Report
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -371,6 +373,7 @@ namespace Beetsoft_Management_System.Migrations
                         .HasColumnType("nvarchar(255)");
 
                     b.Property<int?>("ProjectId")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<double?>("Rate")
@@ -392,6 +395,7 @@ namespace Beetsoft_Management_System.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("UserId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
@@ -436,7 +440,7 @@ namespace Beetsoft_Management_System.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("Status")
+                    b.Property<int>("Status")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -560,7 +564,7 @@ namespace Beetsoft_Management_System.Migrations
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("Type")
+                    b.Property<int>("Type")
                         .HasColumnType("int");
 
                     b.Property<string>("UserName")
@@ -661,14 +665,14 @@ namespace Beetsoft_Management_System.Migrations
                         new
                         {
                             Id = "1",
-                            ConcurrencyStamp = "8a882735-0c41-448e-acaa-96f25238e988",
+                            ConcurrencyStamp = "dfbed1b2-43c2-4e1a-8d9d-f594ce284e9f",
                             Name = "Admin",
                             NormalizedName = "admin"
                         },
                         new
                         {
                             Id = "2",
-                            ConcurrencyStamp = "3c11b71a-7ec4-418b-8728-2aa2420d317e",
+                            ConcurrencyStamp = "46032162-67a9-4804-8697-67a01117d86a",
                             Name = "Member",
                             NormalizedName = "member"
                         });
@@ -880,11 +884,15 @@ namespace Beetsoft_Management_System.Migrations
                 {
                     b.HasOne("Beetsoft_Management_System.Data.Entities.Project", "Project")
                         .WithMany("Reports")
-                        .HasForeignKey("ProjectId");
+                        .HasForeignKey("ProjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Beetsoft_Management_System.Data.Entities.User", "User")
-                        .WithMany("Reports")
-                        .HasForeignKey("UserId");
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Project");
 
@@ -1083,8 +1091,6 @@ namespace Beetsoft_Management_System.Migrations
                     b.Navigation("OffReports");
 
                     b.Navigation("PmProjects");
-
-                    b.Navigation("Reports");
                 });
 #pragma warning restore 612, 618
         }

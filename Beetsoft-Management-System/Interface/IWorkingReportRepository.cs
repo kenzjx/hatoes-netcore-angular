@@ -9,7 +9,7 @@ namespace Beetsoft_Management_System.Repository
 {
     public interface IWorkingReportRepository : IRepositoryBase<Report>
     {
-       Task<PagedList<WorkingQuery>> GetWorkingAsync(WorkingParamters workingParameters);
+       Task<PagedList<Report>> GetWorkingAsync(WorkingParamters workingParameters);
        
        Task<Report> GetWorkingByIdAsync(int id);
 

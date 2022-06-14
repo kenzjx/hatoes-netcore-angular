@@ -3,7 +3,7 @@ using Beetsoft_Management_System.Dtos.Report.Working;
 
 namespace Beetsoft_Management_System.Helpers
 {
-    public class WorkingSort : SortHelper<WorkingQuery>
+    public class WorkingSort : SortHelper<Report>
     {
         
     }

@@ -8,7 +8,7 @@ using Beetsoft_Management_System.Pagination;
 using Beetsoft_Management_System.Data;
 using Beetsoft_Management_System.Helpers;
 using Microsoft.EntityFrameworkCore;
-using Beetsoft_Management_System.Data.Enums;
+
 using System.Text;
 using System.Linq.Dynamic.Core;
 
@@ -36,32 +36,34 @@ namespace Beetsoft_Management_System.Repository
             throw new NotImplementedException();
         }
 
-        public async Task<PagedList<WorkingQuery>> GetWorkingAsync(WorkingParamters workingParameters)
+        public async Task<PagedList<Report>> GetWorkingAsync(WorkingParamters workingParameters)
         {
-            var report = context.Reports.Include(c => c.Project).Include(r => r.ReportPositions).ThenInclude(r => r.Position).Select(r => new WorkingQuery
+            var report = context.Reports.Where(p => p.Type == 1).Include(c => c.Project).Include(r => r.ReportPositions).ThenInclude(r => r.Position).Select(r => new WorkingQuery
             {
                 Id = r.Id,
                 Time = (float)r.Time,
                 Day = (DateTime)r.Date
             ,
-                Type = (WorkingType)r.Type,
+                Type = (int)r.Type,
                 Note = r.Note,
-                Status = (Status)r.Status,
+                Status = (int)r.Status,
                 Project = r.Project,
                 positionNames = r.ReportPositions.Select(r => r.Position.PositionName)
             }).AsNoTracking();
 
-            var reportSeach = SearchBy(report, workingParameters.Name);
+            var reportTest = context.Reports.Where(p => p.Type == 1).Include( r => r.Project).AsNoTracking();
+
+            var reportSeach = SearchBy(reportTest, workingParameters.Name);
             
             var sortedReport = _sortReport.AppySort(reportSeach, workingParameters.OrderBy);
 
-            return await PagedList<WorkingQuery>.ToPagedList(sortedReport, workingParameters.PageNumber, workingParameters.PageSize);
+            return await PagedList<Report>.ToPagedList(sortedReport, workingParameters.PageNumber, workingParameters.PageSize);
         }
 
-        private IQueryable<WorkingQuery> SearchBy(IQueryable<WorkingQuery> report, string name)
+        private IQueryable<Report> SearchBy(IQueryable<Report> report, string name)
         {
             if (!report.Any() || string.IsNullOrEmpty(name)) return report;
-            return report.Where(o => o.Project.ProjectName.ToLower().Contains(name.Trim().ToLower()) || o.positionNames.Contains(name));
+            return report.Where(o => o.Project.ProjectName.ToLower().Contains(name.Trim().ToLower()) );
         }
 
         

@@ -125,7 +125,7 @@ namespace Beetsoft_Management_System.Controllers
                                          Department = user.k.x.d.DepartmentName,
                                          Role = user.r.Name,
                                          Status = user.k.x.u.Status,
-                                         Type = user.k.x.u.Type
+                                        //  Type = user.k.x.u.Type
                                      });
 
             if (!string.IsNullOrEmpty(searchString))

@@ -1,4 +1,4 @@
-﻿using Beetsoft_Management_System.Data.Enums;
+﻿
 
 namespace Beetsoft_Management_System.Systems
 {
@@ -13,12 +13,12 @@ namespace Beetsoft_Management_System.Systems
 
         public DateTime? EndDate { get; set; }
 
-        public TypeUser Type { get; set; }
+        public int Type { get; set; }
 
         public string Role { get; set; }
 
         public string Department { get; set; }
 
-        public Status Status { get; set; }
+        public int Status { get; set; }
     }
 }

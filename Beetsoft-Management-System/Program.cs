@@ -1,4 +1,6 @@
 using System.Text;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using Beetsoft_Management_System.Data;
 using Beetsoft_Management_System.Data.Entities;
 using Beetsoft_Management_System.Helpers;
@@ -32,7 +34,14 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+JsonSerializerOptions options = new()
+{
+    ReferenceHandler = ReferenceHandler.IgnoreCycles,
+    WriteIndented = true
+};
 
+builder.Services.AddControllersWithViews()
+    .AddJsonOptions(options => options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
 //builder.Services.AddCors();
 
@@ -105,7 +114,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
 //                 .AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
 
 
-builder.Services.AddControllersWithViews();
+
 
 builder.Services.AddHttpContextAccessor();
 
@@ -120,7 +129,6 @@ var app = builder.Build();
 
 
 using (var scope = app.Services.CreateScope())
-
 {
     SeedDepartment.InitializeSeedDepartment(scope.ServiceProvider);
 }

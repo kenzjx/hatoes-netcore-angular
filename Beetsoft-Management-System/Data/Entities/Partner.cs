@@ -1,4 +1,4 @@
-﻿using Beetsoft_Management_System.Data.Enums;
+﻿
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -27,6 +27,6 @@ namespace Beetsoft_Management_System.Data.Entities
         [MaxLength(255)]
         public string? Description { get; set; }
 
-        public Status Status { get; set; }
+        public int Status { get; set; }
     }
 }
