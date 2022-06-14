@@ -86,6 +86,7 @@ var app = builder.Build();
 //    SeedRoles.InitializeSeedRoles(scope.ServiceProvider);
 //}
 using( var scope = app.Services.CreateScope())
+
 {
    SeedDepartment.InitializeSeedDepartment(scope.ServiceProvider);
 }

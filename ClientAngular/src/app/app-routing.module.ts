@@ -18,7 +18,8 @@ const routes: Routes = [
   children: [
     {path: '', loadChildren: () => import('./admin/admin-dashboard/admin-dashboard.module').then(m => m.AdminDashboardModule)}
   ]},
-  {path: 'dashboard', component: DashboardComponent}
+  {path: 'dashboard', component: DashboardComponent},
+  {path: 'myreport', component: MyreportComponent}
 ];
 
 @NgModule({
