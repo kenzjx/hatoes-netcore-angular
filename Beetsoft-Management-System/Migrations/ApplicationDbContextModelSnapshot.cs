@@ -661,14 +661,14 @@ namespace Beetsoft_Management_System.Migrations
                         new
                         {
                             Id = "1",
-                            ConcurrencyStamp = "c521b241-12fb-40c8-b85d-4400e1f9b0ca",
+                            ConcurrencyStamp = "3a8e2c15-912e-4957-8511-b4d1e0d50cd6",
                             Name = "Admin",
                             NormalizedName = "admin"
                         },
                         new
                         {
                             Id = "2",
-                            ConcurrencyStamp = "fc3932fb-6591-43f3-baeb-44967717f5a7",
+                            ConcurrencyStamp = "1f0c129d-1ac2-4635-9ea9-842754eaf74e",
                             Name = "Member",
                             NormalizedName = "member"
                         });

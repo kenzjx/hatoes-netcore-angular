@@ -1,0 +1,26 @@
+.mat-tab-group {
+    margin-bottom: 48px;
+    width: 100%;
+}
+
+.label {
+    font-weight: 400px;
+    font-size: larger;
+}
+
+table {
+    width: 100%;
+}
+
+.search-form-field {
+    margin-right: 0px;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline {
+    color: rgb(255, 255, 255);
+    /* background-color: white; */
+}
+
+::ng-deep .mat-form-field-underline {
+    display: none;
+}

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Beetsoft_Management_System.Migrations
 {
-    public partial class Init : Migration
+    public partial class update : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -511,8 +511,8 @@ namespace Beetsoft_Management_System.Migrations
                     Time = table.Column<float>(type: "real", nullable: true),
                     Date = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Note = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
-                    Status = table.Column<int>(type: "int", nullable: true),
-                    Type = table.Column<int>(type: "int", nullable: true),
+                    Status = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Type = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Rate = table.Column<double>(type: "float", nullable: true),
@@ -541,8 +541,7 @@ namespace Beetsoft_Management_System.Migrations
                 columns: table => new
                 {
                     PostionId = table.Column<int>(type: "int", nullable: false),
-                    ReportId = table.Column<int>(type: "int", nullable: false),
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    ReportId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -564,12 +563,12 @@ namespace Beetsoft_Management_System.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "1", "71b3fb02-30b0-4a00-bc42-5ca1a6301a9d", "Admin", "admin" });
+                values: new object[] { "1", "3a8e2c15-912e-4957-8511-b4d1e0d50cd6", "Admin", "admin" });
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "2", "dce1e412-d0e0-4b42-ad5e-be87aa18b984", "Member", "member" });
+                values: new object[] { "2", "1f0c129d-1ac2-4635-9ea9-842754eaf74e", "Member", "member" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

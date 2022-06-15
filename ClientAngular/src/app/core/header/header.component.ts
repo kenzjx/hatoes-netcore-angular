@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
+import { UserServiceService } from 'src/app/services/user-service/user-service.service';
 
 @Component({
   selector: 'app-header',
@@ -10,7 +12,7 @@ export class HeaderComponent implements OnInit {
 
   @Output() toggleSidebarForMe: EventEmitter<any> = new EventEmitter();
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private userService: UserServiceService,private route:Router) { }
 
   ngOnInit(): void {
   }
@@ -37,5 +39,9 @@ export class HeaderComponent implements OnInit {
 
   toggleSidebar() {
     this.toggleSidebarForMe.emit();
+  }
+  logout(){
+    this.userService.removeUserLocal();
+    this.route.navigateByUrl('/login');
   }
 }

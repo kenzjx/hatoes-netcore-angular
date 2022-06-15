@@ -128,7 +128,8 @@ builder.Services.Configure<FormOptions>(o =>
 var app = builder.Build();
 
 
-using (var scope = app.Services.CreateScope())
+using( var scope = app.Services.CreateScope())
+
 {
     SeedDepartment.InitializeSeedDepartment(scope.ServiceProvider);
 }
@@ -154,12 +155,12 @@ app.UseHttpsRedirection();
 
 app.UseStaticFiles();
 
-app.UseStaticFiles( new StaticFileOptions () {
-    FileProvider = new PhysicalFileProvider(
-        Path.Combine(Directory.GetCurrentDirectory(), "Uploads")
-    ),
-    RequestPath = "/contents"
-});
+//app.UseStaticFiles( new StaticFileOptions () {
+//    FileProvider = new PhysicalFileProvider(
+//        Path.Combine(Directory.GetCurrentDirectory(), "Uploads")
+//    ),
+//    RequestPath = "/contents"
+//});
 
 
 

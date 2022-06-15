@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Beetsoft_Management_System.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220614092609_Init")]
-    partial class Init
+    [Migration("20220615020012_update")]
+    partial class update
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -384,14 +384,14 @@ namespace Beetsoft_Management_System.Migrations
                     b.Property<bool>("ReportType")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("Status")
-                        .HasColumnType("int");
+                    b.Property<string>("Status")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<float?>("Time")
                         .HasColumnType("real");
 
-                    b.Property<int?>("Type")
-                        .HasColumnType("int");
+                    b.Property<string>("Type")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
@@ -414,9 +414,6 @@ namespace Beetsoft_Management_System.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("PostionId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Id")
                         .HasColumnType("int");
 
                     b.HasKey("ReportId", "PostionId");
@@ -666,14 +663,14 @@ namespace Beetsoft_Management_System.Migrations
                         new
                         {
                             Id = "1",
-                            ConcurrencyStamp = "71b3fb02-30b0-4a00-bc42-5ca1a6301a9d",
+                            ConcurrencyStamp = "3a8e2c15-912e-4957-8511-b4d1e0d50cd6",
                             Name = "Admin",
                             NormalizedName = "admin"
                         },
                         new
                         {
                             Id = "2",
-                            ConcurrencyStamp = "dce1e412-d0e0-4b42-ad5e-be87aa18b984",
+                            ConcurrencyStamp = "1f0c129d-1ac2-4635-9ea9-842754eaf74e",
                             Name = "Member",
                             NormalizedName = "member"
                         });

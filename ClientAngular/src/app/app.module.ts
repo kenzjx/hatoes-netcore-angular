@@ -4,6 +4,7 @@ import {MatSliderModule} from '@angular/material/slider'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
@@ -18,6 +19,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 
+import {MatTabsModule} from '@angular/material/tabs';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
@@ -31,17 +33,19 @@ import { FooterComponent } from './core/footer/footer.component';
 import { AdminComponent } from './admin/admin.component';
 import { ManageReportComponent } from './reports/manage-report/manage-report.component';
 import { HttpClientModule } from '@angular/common/http';
-import { MatInputModule } from '@angular/material/input';
-
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { UserComponent } from './user/user.component';
-import { UserProfileComponent } from './user/user-profile/user-profile.component';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import {MatTabsModule} from '@angular/material/tabs';
-import { UserPasswordComponent } from './user/user-password/user-password.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatTableModule} from '@angular/material/table';
+import {MatSortModule} from '@angular/material/sort';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { UserComponent } from './user/user.component';
+import { UserProfileComponent } from './user/user-profile/user-profile.component';
+import { UserPasswordComponent } from './user/user-password/user-password.component';
 import { DatePipe } from '@angular/common';
+
+
 
 
 @NgModule({
@@ -57,7 +61,8 @@ import { DatePipe } from '@angular/common';
     ManageReportComponent,
     UserComponent,
     UserProfileComponent,
-    UserPasswordComponent
+    UserPasswordComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -85,13 +90,16 @@ import { DatePipe } from '@angular/common';
     MatTabsModule,
     MatDatepickerModule,
     MatNativeDateModule,
-
-
     HttpClientModule,
-
     FormsModule,
     ReactiveFormsModule,
-
+    MatTabsModule,
+    MatPaginatorModule,
+    MatTableModule,
+    MatSortModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule,
 
   ],
   providers: [

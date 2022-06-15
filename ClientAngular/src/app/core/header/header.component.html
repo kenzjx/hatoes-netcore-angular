@@ -1,21 +1,21 @@
 <mat-toolbar class="c-header">
-  <div>
-    <button mat-icon-button (click)="toggleSidebar()">
+    <div>
+        <button mat-icon-button (click)="toggleSidebar()">
       <mat-icon>menu</mat-icon>
     </button>
-  </div>
-  <div class="row mr-2 ml-auto user-header">
-    <div>
-      <div><button mat-button class="user mt-2 d-flex align-items-center">
+    </div>
+    <div class="row mr-2 ml-auto user-header">
+        <div>
+            <div><button mat-button class="user mt-2 d-flex align-items-center">
         <img src="./assets/images.png" alt="" class="user-image mr-1 p-2" />
         {{userName}}
       </button></div>
-      <div class="role-c">{{roleName}}</div>
-    </div>
-    <div>
-      <button mat-menu-item class="logout">
-        <mat-icon>exit_to_app</mat-icon>
+            <div class="role-c">{{roleName}}</div>
+        </div>
+        <div>
+            <button mat-menu-item class="logout">
+        <mat-icon (click)="logout()">exit_to_app</mat-icon>
       </button>
+        </div>
     </div>
-  </div>
 </mat-toolbar>

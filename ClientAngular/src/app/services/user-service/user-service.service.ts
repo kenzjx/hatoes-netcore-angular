@@ -50,6 +50,10 @@ export class UserServiceService {
     window.localStorage.setItem('role', userDecode.role);
   }
 
+  removeUserLocal(){
+    window.localStorage.clear();
+  }
+
 
   getUserJWT(): IUserDecode | any {
     const userReponse: IUserDecode = {

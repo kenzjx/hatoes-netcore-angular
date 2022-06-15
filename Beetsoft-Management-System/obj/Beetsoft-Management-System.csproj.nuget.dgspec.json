@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\phong\\Desktop\\Beetsoft-Management-System-phong-developer\\Beetsoft-Management-System\\Beetsoft-Management-System.csproj": {}
+    "D:\\Projects\\BMS\\Beetsoft-Management-System\\Beetsoft-Management-System.csproj": {}
   },
   "projects": {
-    "C:\\Users\\phong\\Desktop\\Beetsoft-Management-System-phong-developer\\Beetsoft-Management-System\\Beetsoft-Management-System.csproj": {
+    "D:\\Projects\\BMS\\Beetsoft-Management-System\\Beetsoft-Management-System.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\phong\\Desktop\\Beetsoft-Management-System-phong-developer\\Beetsoft-Management-System\\Beetsoft-Management-System.csproj",
+        "projectUniqueName": "D:\\Projects\\BMS\\Beetsoft-Management-System\\Beetsoft-Management-System.csproj",
         "projectName": "Beetsoft-Management-System",
-        "projectPath": "C:\\Users\\phong\\Desktop\\Beetsoft-Management-System-phong-developer\\Beetsoft-Management-System\\Beetsoft-Management-System.csproj",
-        "packagesPath": "C:\\Users\\phong\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\phong\\Desktop\\Beetsoft-Management-System-phong-developer\\Beetsoft-Management-System\\obj\\",
+        "projectPath": "D:\\Projects\\BMS\\Beetsoft-Management-System\\Beetsoft-Management-System.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "D:\\Projects\\BMS\\Beetsoft-Management-System\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\phong\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,6 +22,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "http://nuget.sitefinity.com/nuget": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
