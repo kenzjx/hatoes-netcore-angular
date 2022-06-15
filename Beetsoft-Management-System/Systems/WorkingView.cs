@@ -21,7 +21,9 @@ namespace Beetsoft_Management_System.Systems
 
         public string ProjectName { set; get; }
 
-        public IEnumerable<Postition> Postions {set;get;}
+        public int PositionId { set; get; }
+
+        public string PositionName { set; get; }
 
     }
     public class Postition

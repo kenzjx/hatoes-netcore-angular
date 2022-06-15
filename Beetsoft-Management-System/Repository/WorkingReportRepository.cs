@@ -38,10 +38,11 @@ namespace Beetsoft_Management_System.Repository
             throw new NotImplementedException();
         }
 
-        public async Task<PagedList<WorkingView>> GetWorkingAsync( string id ,WorkingParamters workingParameters)
+        public async Task<PagedList<WorkingView>> GetWorkingAsync(string id, WorkingParamters workingParameters)
         {
-            var reportTest = context.Reports.Where(p => p.ReportType == false && p.UserId == id).Select(r => new WorkingView{
-                Id = r.Id,            
+            var reportTest = context.Reports.Where(p => p.ReportType == false && p.UserId == id).Select(r => new WorkingView
+            {
+                Id = r.Id,
                 Time = r.Time,
                 Date = r.Date,
                 Note = r.Note,
@@ -49,10 +50,8 @@ namespace Beetsoft_Management_System.Repository
                 Status = r.Status,
                 ProjectName = r.Project.ProjectName,
                 ProjectId = (int)r.ProjectId,
-                Postions = r.ReportPositions.Where(r => r.PostionId == r.Report.PositionId).Select(r => new Postition{
-                    positionId = r.Position.Id,
-                    PositionName = r.Position.PositionName
-                })
+                PositionId = r.ReportPositions.Where(r => r.PostionId == r.Report.PositionId).Select(r => r.PostionId).FirstOrDefault(),
+                PositionName = r.ReportPositions.Where(r => r.PostionId == r.Report.PositionId).Select(r => r.Position.PositionName).FirstOrDefault()
             }).AsNoTracking();
 
             var reportSeach = SearchBy(reportTest, workingParameters.Name);
@@ -82,8 +81,9 @@ namespace Beetsoft_Management_System.Repository
 
         public async Task<PagedList<WorkingView>> GetWorkingManageAsync(WorkingParamters workingParameters)
         {
-           var reportTest = context.Reports.Where(p => p.ReportType == false).Select(r => new WorkingView{
-                Id = r.Id,            
+            var reportTest = context.Reports.Where(p => p.ReportType == false).Select(r => new WorkingView
+            {
+                Id = r.Id,
                 Time = r.Time,
                 Date = r.Date,
                 Note = r.Note,
@@ -91,10 +91,8 @@ namespace Beetsoft_Management_System.Repository
                 Status = r.Status,
                 ProjectName = r.Project.ProjectName,
                 ProjectId = (int)r.ProjectId,
-                Postions = r.ReportPositions.Where(r => r.PostionId == r.Report.PositionId).Select(r => new Postition{
-                    positionId = r.Position.Id,
-                    PositionName = r.Position.PositionName
-                })
+                PositionId = r.ReportPositions.Where(r => r.PostionId == r.Report.PositionId).Select(r => r.PostionId).FirstOrDefault(),
+                PositionName = r.ReportPositions.Where(r => r.PostionId == r.Report.PositionId).Select(r => r.Position.PositionName).FirstOrDefault()
             }).AsNoTracking();
 
             var reportSeach = SearchBy(reportTest, workingParameters.Name);

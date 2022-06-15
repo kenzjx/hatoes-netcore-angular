@@ -33,7 +33,7 @@ export class MyreportComponent implements OnInit {
     'action',
   ];
 
-  dataSource: any;
+  dataSource!: MatTableDataSource<any>;
   isloading = true;
   TbForm!: FormGroup;
 
@@ -50,41 +50,41 @@ export class MyreportComponent implements OnInit {
   ngOnInit(): void {
     this.reportService.getListReports().subscribe(
       (res) => {
-        this.listReports = res;
-        console.log(this.listReports);
-        this.dataSource = res;
+        // this.listReports = res;
+        // console.log(this.listReports);
+        this.dataSource = new MatTableDataSource(res);
       },
       (error) => {
         console.log(error);
       }
     );
 
-    this.TbForm = this._formBuilder.group({
-      TbRows: this._formBuilder.array([]),
-    });
+    // this.TbForm = this._formBuilder.group({
+    //   TbRows: this._formBuilder.array([]),
+    // });
 
-    this.TbForm = this.fb.group({
-      TbRows: this.fb.array(
-        this.listReports?.map((value) =>
-          this.fb.group({
-            projectName: new FormControl(value?.projectName),
-            positionName: new FormControl(value?.positions?.positionName),
-            time: new FormControl(value?.time),
-            day: new FormControl(value?.day),
-            note: new FormControl(value?.note),
-            status: new FormControl(value?.status),
-            type: new FormControl(value?.type),
-            isEditable: new FormControl(true),
-            isNewRow: new FormControl(false),
-          })
-        )
-      ), //end of fb array
-    }); // end of form group cretation
+    // this.TbForm = this.fb.group({
+    //   TbRows: this.fb.array(
+    //     this.listReports?.map((value) =>
+    //       this.fb.group({
+    //         projectName: new FormControl(value?.projectName),
+    //         positionName: new FormControl(value?.positions?.positionName),
+    //         time: new FormControl(value?.time),
+    //         day: new FormControl(value?.day),
+    //         note: new FormControl(value?.note),
+    //         status: new FormControl(value?.status),
+    //         type: new FormControl(value?.type),
+    //         isEditable: new FormControl(true),
+    //         isNewRow: new FormControl(false),
+    //       })
+    //     )
+    //   ), //end of fb array
+    // }); // end of form group cretation
 
-    this.dataSource = new MatTableDataSource(
-      (this.TbForm.get('TbRows') as FormArray).controls
+    // this.dataSource = new MatTableDataSource(
+    //   (this.TbForm.get('TbRows') as FormArray).controls
 
-    );
+    // );
     // this.dataSource.paginator = this.paginator;
 
     // this.reportService.getListProjects().subscribe(
@@ -102,11 +102,38 @@ export class MyreportComponent implements OnInit {
     // );
   }
 
+  // onSearchClear() {
+  //   this.searchKey = '';
+  //   this.applyFilter();
+  // }
+
+  // applyFilter() {
+  //   this.listReports.filter = this.searchKey.trim().toLocaleLowerCase();
+  // }
+
+  // addRow() {
+  //   const newRow = {
+  //     reportId: 0,
+  //     projectId : 0,
+  //     positionId : 0,
+  //     time : 8,
+  //     day: '',
+  //     type: 1,
+  //     note: '',
+  //     status:1,
+  //   };
+  //   this.dataSource = [newRow, ...this.dataSource];
+  // }
 
   AddNewRow() {
+    // this.getBasicDetails();
     const control = this.TbForm.get('TbRows') as FormArray;
     control.insert(0, this.initiateVOForm());
     this.dataSource = new MatTableDataSource(control.controls);
+    // control.controls.unshift(this.initiateVOForm());
+    // this.openPanel(panel);
+    // this.table.renderRows();
+    // this.dataSource.data = this.dataSource.data;
   }
 
   initiateVOForm(): FormGroup {

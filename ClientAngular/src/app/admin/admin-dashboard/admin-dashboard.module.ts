@@ -7,12 +7,14 @@ import { ProjectEditComponent } from 'src/app/projects/project-edit/project-edit
 import { AdminComponent } from '../admin.component';
 import { UserComponent } from 'src/app/user/user.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MyreportComponent } from 'src/app/reports/myreport/myreport.component';
 
 const dashboardRoutes : Routes = [
   {path: 'dashboard', component: DashboardComponent},
   {path: 'project', component: ProjectComponentComponent},
   {path: 'project-edit/:id', component: ProjectEditComponent},
-  {path: 'account-settings', component: UserComponent}
+  {path: 'account-settings', component: UserComponent},
+  {path: 'my-reports', component: MyreportComponent}
 ]
 
 @NgModule({

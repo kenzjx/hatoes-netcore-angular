@@ -1,86 +1,63 @@
 <button><mat-icon (click)="AddNewRow()" class="add-button">add_box</mat-icon></button>
 <mat-tab-group animationDuration="0ms">
     <mat-tab label="Working Report">
-        <form [formGroup]="TbForm" autocomplete="off">
-            <ng-container formArrayName="TbRows">
-                <table #table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <table #table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
-                    <!-- Project Column -->
-                    <ng-container matColumnDef="project">
-                        <th mat-header-cell *matHeaderCellDef> Project </th>
-                        <td mat-cell *matCellDef="let element; let i = index" [formGroup]="element">
-                            <mat-form-field style="width: 120px;">
-                                <input matInput type="number" formControlName="projectName" [readonly]="true">
-                            </mat-form-field>
-                    </ng-container>
-
-                    <!-- Position Column -->
-                    <ng-container matColumnDef="position">
-                        <th mat-header-cell *matHeaderCellDef> Position </th>
-                        <td mat-cell *matCellDef="let element; let i = index" [formGroup]="element">
-                            <mat-form-field style="width: 120px;">
-                                <input matInput type="number" formControlName="positionName" [readonly]="true">
-                            </mat-form-field>
-                    </ng-container>
-
-                    <!-- Time Column -->
-                    <ng-container matColumnDef="time">
-                        <th mat-header-cell *matHeaderCellDef> Time </th>
-                        <td mat-cell *matCellDef="let element; let i = index" [formGroup]="element">
-                            <mat-form-field style="width: 60px;">
-                                <input matInput type="number" formControlName="time" [readonly]="true">
-                            </mat-form-field>
-                    </ng-container>
-
-                    <!-- Day Column -->
-                    <ng-container matColumnDef="day">
-                        <th mat-header-cell *matHeaderCellDef> Day </th>
-                        <td mat-cell *matCellDef="let element; let i = index" [formGroup]="element">
-                            <mat-form-field style="width: 120px;">
-                                <input matInput type="text" formControlName="day" [readonly]="true">
-                            </mat-form-field>
-                    </ng-container>
-
-                    <!-- Type Column -->
-                    <ng-container matColumnDef="type">
-                        <th mat-header-cell *matHeaderCellDef> Type </th>
-                        <td mat-cell *matCellDef="let element; let i = index" [formGroup]="element">
-                            <mat-form-field>
-                                <input matInput type="number" formControlName="type" [readonly]="true">
-                            </mat-form-field>
-                    </ng-container>
-
-                    <!-- Note Column -->
-                    <ng-container matColumnDef="note">
-                        <th mat-header-cell *matHeaderCellDef> Note </th>
-                        <td mat-cell *matCellDef="let element; let i = index" [formGroup]="element">
-                            <mat-form-field>
-                                <input matInput type="text" formControlName="note" [readonly]="true">
-                            </mat-form-field>
-                    </ng-container>
-
-                    <!-- Status Column -->
-                    <ng-container matColumnDef="status">
-                        <th mat-header-cell *matHeaderCellDef> Status </th>
-                        <td mat-cell *matCellDef="let element; let i = index" [formGroup]="element">
-                            <mat-form-field style="width: 120px;">
-                                <input matInput type="number" formControlName="status" [readonly]="true">
-                            </mat-form-field>
-                    </ng-container>
-
-                    <!-- Action Column -->
-                    <ng-container matColumnDef="action">
-                        <th mat-header-cell *matHeaderCellDef> Action </th>
-                        <td mat-cell *matCellDef="let row">
-                            <button mat-icon-button color="primary"><mat-icon>edit</mat-icon></button>
-                            <button mat-icon-button color="warn"><mat-icon>delete_outline</mat-icon></button>
-                        </td>
-                    </ng-container>
-                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                </table>
+            <!-- Project Column -->
+            <ng-container matColumnDef="project">
+                <th mat-header-cell *matHeaderCellDef style="width: 120px;"> Project </th>
+                <td mat-cell *matCellDef="let element"> {{element?.projectName}} </td>
             </ng-container>
-        </form>
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="position">
+                <th mat-header-cell *matHeaderCellDef style="width: 120px;"> Position </th>
+                <td mat-cell *matCellDef="let element"> {{element?.positionName}} </td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="time">
+                <th mat-header-cell *matHeaderCellDef style="width: 70px;"> Time </th>
+                <td mat-cell *matCellDef="let element"> {{element.time}} </td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="day">
+                <th mat-header-cell *matHeaderCellDef style="width: 150px;"> Day </th>
+                <td mat-cell *matCellDef="let element"> {{element.day |date}} </td>
+
+
+            </ng-container>
+
+            <ng-container matColumnDef="type">
+                <th mat-header-cell *matHeaderCellDef style="width: 150px;"> Type </th>
+                <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="note">
+                <th mat-header-cell *matHeaderCellDef> Note </th>
+                <td mat-cell *matCellDef="let element"> {{element.note}} </td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="status">
+                <th mat-header-cell *matHeaderCellDef style="width: 120px;"> Status </th>
+                <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef style="width: 150px;"></th>
+                <td mat-cell *matCellDef="let row">
+                    <button mat-icon-button><mat-icon >launch</mat-icon></button>
+                    <button mat-icon-button color="warn"><mat-icon>delete_outline</mat-icon></button>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+        </table>
     </mat-tab>
 
     <mat-tab label="Overtime Report">
