@@ -22,7 +22,7 @@ export class ReportService {
   userId: string = window.localStorage.getItem('Id') || '';
 
   getListReports(): Observable<IReport[]> {
-    return this.http.get<IReport[]>(this.BaseURI + `/api/report/working-reports/${this.userId}?PageNumber=1&PageSize=100`);
+    return this.http.get<IReport[]>(this.BaseURI + `/api/report/working-reports/106374684154750366419?PageNumber=1&PageSize=100`);
   }
 
   // getListProjects(): Observable<Project[]>{

@@ -1,26 +1,35 @@
-.mat-tab-group {
-    margin-bottom: 48px;
-    width: 100%;
-}
-
-.label {
-    font-weight: 400px;
-    font-size: larger;
+p {
+    font-family: Lato;
 }
 
 table {
     width: 100%;
+    margin: auto;
+    margin-top: 10px;
 }
 
-.search-form-field {
-    margin-right: 0px;
+.btn-edit {
+    text-align: left;
 }
 
-.mat-form-field-appearance-outline .mat-form-field-outline {
-    color: rgb(255, 255, 255);
-    /* background-color: white; */
+h2 {
+    text-align: center;
+    padding-top: 20px;
 }
 
-::ng-deep .mat-form-field-underline {
-    display: none;
+.table-header {
+    width: 100%;
+    // margin: auto;
+    text-align: left;
+    // margin-bottom: 10px;
+}
+
+.form-input {
+    width: auto;
+}
+
+.button-add-row {
+    margin: auto;
+    margin-top: 10px;
+    margin-left: 10px;
 }

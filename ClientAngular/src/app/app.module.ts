@@ -44,6 +44,7 @@ import { UserComponent } from './user/user.component';
 import { UserProfileComponent } from './user/user-profile/user-profile.component';
 import { UserPasswordComponent } from './user/user-password/user-password.component';
 import { DatePipe } from '@angular/common';
+import {MatSelectModule} from '@angular/material/select';
 
 
 
@@ -100,6 +101,7 @@ import { DatePipe } from '@angular/common';
     MatFormFieldModule,
     MatInputModule,
     MatDatepickerModule,
+    MatSelectModule
 
   ],
   providers: [
